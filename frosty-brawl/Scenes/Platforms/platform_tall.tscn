@@ -1,0 +1,14 @@
+[gd_scene format=3 uid="uid://b4t5x5yfkelk6"]
+
+[ext_resource type="ArrayMesh" uid="uid://b1devq7pph5uc" path="res://Models/Platforms/OBJ format/block-snow-overhang-low-large.obj" id="1_onl31"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_13qdw"]
+
+[node name="Platform_tall" type="StaticBody3D" unique_id=1382523580]
+
+[node name="BlockSnowOverhangLowLarge" type="MeshInstance3D" parent="." unique_id=873103101]
+mesh = ExtResource("1_onl31")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1583004634]
+transform = Transform3D(2, 0, 0, 0, 0.5, 0, 0, 0, 2, 0, 0.25, 0)
+shape = SubResource("BoxShape3D_13qdw")
