@@ -1,0 +1,25 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://d0fna64snu4kc"
+path="res://.godot/imported/trap-spikes-large.obj-044b3c092b4286224f01a61f3c6201f4.mesh"
+
+[deps]
+
+files=["res://.godot/imported/trap-spikes-large.obj-044b3c092b4286224f01a61f3c6201f4.mesh"]
+
+source_file="res://Models/Platforms/OBJ format/trap-spikes-large.obj"
+dest_files=["res://.godot/imported/trap-spikes-large.obj-044b3c092b4286224f01a61f3c6201f4.mesh", "res://.godot/imported/trap-spikes-large.obj-044b3c092b4286224f01a61f3c6201f4.mesh"]
+
+[params]
+
+generate_tangents=true
+generate_lods=true
+generate_shadow_mesh=true
+generate_lightmap_uv2=false
+generate_lightmap_uv2_texel_size=0.2
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+force_disable_mesh_compression=false
