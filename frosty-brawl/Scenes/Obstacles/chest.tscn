@@ -1,0 +1,15 @@
+[gd_scene format=3 uid="uid://cjwynfaucddm1"]
+
+[ext_resource type="ArrayMesh" uid="uid://bsk2rqxrltlxu" path="res://Models/Platforms/OBJ format/crate-strong.obj" id="1_seji2"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_xrivr"]
+size = Vector3(0.59924316, 0.56881714, 0.5826416)
+
+[node name="Chest" type="StaticBody3D" unique_id=171201030]
+
+[node name="CrateStrong" type="MeshInstance3D" parent="." unique_id=1488518748]
+mesh = ExtResource("1_seji2")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=2063698349]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00018310547, 0.29014587, 0.0012817383)
+shape = SubResource("BoxShape3D_xrivr")

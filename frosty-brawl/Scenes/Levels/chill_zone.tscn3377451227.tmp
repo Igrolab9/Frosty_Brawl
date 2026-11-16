@@ -1,0 +1,32 @@
+[gd_scene format=3 uid="uid://d3sbpfkyqyegf"]
+
+[ext_resource type="PackedScene" uid="uid://ylckshaihkw" path="res://Scenes/Platforms/platform_large.tscn" id="1_xjpu7"]
+[ext_resource type="PackedScene" uid="uid://l0jb7m8vg0ui" path="res://Scenes/Platforms/wall.tscn" id="2_dydoi"]
+[ext_resource type="PackedScene" uid="uid://c2jxdrfrw301f" path="res://Scenes/Characters/default_player.tscn" id="3_pnfdo"]
+
+[node name="Chill_zone" type="Node3D" unique_id=1584586296]
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1228631388]
+transform = Transform3D(0.96179974, -7.165967e-09, -0.2737541, 0.26263842, 0.2820647, 0.9227462, 0.07721636, -0.9593954, 0.27128974, -6.300424, 32.959854, 6.2437067)
+
+[node name="DirectionalLight3D2" type="DirectionalLight3D" parent="." unique_id=2103728884]
+transform = Transform3D(0.9813171, 0.14248507, 0.12928578, -0.09256789, -0.23942931, 0.966491, 0.16866533, -0.96040183, -0.22176652, -7.7256002, 45.407722, -37.533737)
+
+[node name="Platforms" type="Node3D" parent="." unique_id=1519778802]
+
+[node name="Platform_large" parent="Platforms" unique_id=835607777 instance=ExtResource("1_xjpu7")]
+transform = Transform3D(100, 0, 0, 0, 100, 0, 0, 0, 100, 0, -100, 0)
+
+[node name="Wall" parent="Platforms" unique_id=335647780 instance=ExtResource("2_dydoi")]
+transform = Transform3D(-4.371139e-06, -100, 0, 100, -4.371139e-06, 0, 0, 0, 100, 90, -75, 0)
+
+[node name="Wall2" parent="Platforms" unique_id=1690615264 instance=ExtResource("2_dydoi")]
+transform = Transform3D(-4.371139e-06, 100, 0, -100, -4.371139e-06, 0, 0, 0, 100, -90, -75, 0)
+
+[node name="Wall3" parent="Platforms" unique_id=463720357 instance=ExtResource("2_dydoi")]
+transform = Transform3D(1.9106854e-13, -4.371139e-06, -100, -100, -4.371139e-06, 0, -4.371139e-06, 100, -4.371139e-06, 0, -75, -90)
+
+[node name="Wall4" parent="Platforms" unique_id=970292174 instance=ExtResource("2_dydoi")]
+transform = Transform3D(1.9106854e-13, -4.371139e-06, 100, -100, -4.371139e-06, 0, 4.371139e-06, -100, -4.371139e-06, 0, -75, 90)
+
+[node name="Default_player" parent="." unique_id=367648431 instance=ExtResource("3_pnfdo")]

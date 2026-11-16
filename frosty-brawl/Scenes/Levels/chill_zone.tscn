@@ -1,3 +1,46 @@
 [gd_scene format=3 uid="uid://d3sbpfkyqyegf"]
 
-[node name="Chill_zone" type="Node3D" unique_id=861160659]
+[ext_resource type="PackedScene" uid="uid://l0jb7m8vg0ui" path="res://Scenes/Platforms/wall.tscn" id="2_dydoi"]
+[ext_resource type="PackedScene" uid="uid://dkmgw7ln5bho6" path="res://Scenes/Platforms/floor_platform.tscn" id="2_i6r31"]
+[ext_resource type="PackedScene" uid="uid://j2sa1kd81e3r" path="res://Scenes/Obstacles/tree.tscn" id="4_rn3qs"]
+[ext_resource type="PackedScene" uid="uid://co2ifsq3j6q5b" path="res://Scenes/Obstacles/pine_tree.tscn" id="5_i6r31"]
+[ext_resource type="PackedScene" uid="uid://cnfppytimmuj" path="res://Scenes/Characters/barbarian_player.tscn" id="6_1hfrj"]
+[ext_resource type="PackedScene" uid="uid://cjwynfaucddm1" path="res://Scenes/Obstacles/chest.tscn" id="6_i6r31"]
+
+[node name="Chill_zone" type="Node3D" unique_id=1584586296]
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1228631388]
+transform = Transform3D(0.96179974, -7.165967e-09, -0.2737541, 0.26263842, 0.2820647, 0.9227462, 0.07721636, -0.9593954, 0.27128974, -6.300424, 32.959854, 6.2437067)
+
+[node name="DirectionalLight3D2" type="DirectionalLight3D" parent="." unique_id=2103728884]
+transform = Transform3D(0.9813171, 0.14248507, 0.12928578, -0.09256789, -0.23942931, 0.966491, 0.16866533, -0.96040183, -0.22176652, -7.7256002, 45.407722, -37.533737)
+
+[node name="Platforms" type="Node3D" parent="." unique_id=1519778802]
+
+[node name="Wall" parent="Platforms" unique_id=335647780 instance=ExtResource("2_dydoi")]
+transform = Transform3D(-4.371139e-06, -100, 0, 100, -4.371139e-06, 0, 0, 0, 100, 90, -75, 0)
+
+[node name="Wall2" parent="Platforms" unique_id=1690615264 instance=ExtResource("2_dydoi")]
+transform = Transform3D(-4.371139e-06, 100, 0, -100, -4.371139e-06, 0, 0, 0, 100, -90, -75, 0)
+
+[node name="Wall3" parent="Platforms" unique_id=463720357 instance=ExtResource("2_dydoi")]
+transform = Transform3D(1.9106854e-13, -4.371139e-06, -100, -100, -4.371139e-06, 0, -4.371139e-06, 100, -4.371139e-06, 0, -75, -90)
+
+[node name="Wall4" parent="Platforms" unique_id=970292174 instance=ExtResource("2_dydoi")]
+transform = Transform3D(1.9106854e-13, -4.371139e-06, 100, -100, -4.371139e-06, 0, 4.371139e-06, -100, -4.371139e-06, 0, -75, 90)
+
+[node name="Floor_platform" parent="Platforms" unique_id=448861372 instance=ExtResource("2_i6r31")]
+transform = Transform3D(100, 0, 0, 0, 100, 0, 0, 0, 100, 0, 0, 0)
+
+[node name="Obstacles" type="Node3D" parent="." unique_id=302620339]
+
+[node name="Tree" parent="Obstacles" unique_id=1704054141 instance=ExtResource("4_rn3qs")]
+transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 25.878105, 0, 43.09649)
+
+[node name="Pine_tree" parent="Obstacles" unique_id=696224058 instance=ExtResource("5_i6r31")]
+transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 0, 0, 29.046051)
+
+[node name="Chest" parent="Obstacles" unique_id=171201030 instance=ExtResource("6_i6r31")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 0, 6)
+
+[node name="Barbarian_player" parent="." unique_id=134887536 instance=ExtResource("6_1hfrj")]

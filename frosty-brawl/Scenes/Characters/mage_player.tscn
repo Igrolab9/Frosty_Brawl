@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://btjh3g1ubxbqf"]
+
+[ext_resource type="PackedScene" uid="uid://bto4lnba3udnk" path="res://Scenes/Characters/mage.tscn" id="1_vn6fb"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_ycesq"]
+height = 2.3587646
+
+[node name="Mage_player" type="CharacterBody3D" unique_id=1540482417]
+
+[node name="Mage" parent="." unique_id=1245301092 instance=ExtResource("1_vn6fb")]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1096088869]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.1967163, 0)
+shape = SubResource("CapsuleShape3D_ycesq")
+
+[node name="Camera3D" type="Camera3D" parent="." unique_id=745649626]
+transform = Transform3D(-0.99999994, -2.2626677e-08, 8.444392e-08, 0, 0.96592575, 0.25881904, -8.742277e-08, 0.258819, -0.9659258, 0, 2.146545, -4.0279474)

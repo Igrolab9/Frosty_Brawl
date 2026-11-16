@@ -1,0 +1,24 @@
+[gd_scene format=3 uid="uid://dkmgw7ln5bho6"]
+
+[ext_resource type="Texture2D" uid="uid://c31ub3qv1k885" path="res://Pictures/Textures/snow-1.jpg" id="1_nnb1w"]
+[ext_resource type="Texture2D" uid="uid://by4i35e5e20bd" path="res://Pictures/Textures/snow-1-4.jpg" id="2_ld28t"]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_xrivr"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vxnyo"]
+albedo_texture = ExtResource("1_nnb1w")
+normal_enabled = true
+normal_texture = ExtResource("2_ld28t")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_xrivr"]
+size = Vector3(2, 0.50061035, 2)
+
+[node name="Floor_platform" type="StaticBody3D" unique_id=448861372]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=459236645]
+mesh = SubResource("PlaneMesh_xrivr")
+surface_material_override/0 = SubResource("StandardMaterial3D_vxnyo")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1015310687]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.008300781, -0.24969482, 0.0009765625)
+shape = SubResource("BoxShape3D_xrivr")

@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://bto4lnba3udnk"]
+
+[ext_resource type="PackedScene" uid="uid://yrwyquyp3omq" path="res://Models/Characters/gltf/Mage.glb" id="1_arh1d"]
+
+[node name="Mage" unique_id=1245301092 instance=ExtResource("1_arh1d")]
+
+[node name="Spellbook" parent="Rig/Skeleton3D/handslot_l" parent_id_path=PackedInt32Array(74336167) index="0" unique_id=1698392999]
+visible = false
+
+[node name="Spellbook_open" parent="Rig/Skeleton3D/handslot_l" parent_id_path=PackedInt32Array(74336167) index="1" unique_id=742034395]
+visible = false
+
+[node name="1H_Wand" parent="Rig/Skeleton3D/handslot_r" parent_id_path=PackedInt32Array(1751601577) index="0" unique_id=1390372982]
+visible = false
+
+[node name="2H_Staff" parent="Rig/Skeleton3D/handslot_r" parent_id_path=PackedInt32Array(1751601577) index="1" unique_id=1130459134]
+visible = false

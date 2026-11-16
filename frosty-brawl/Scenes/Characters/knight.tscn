@@ -1,0 +1,26 @@
+[gd_scene format=3 uid="uid://caxh4er3ol3rc"]
+
+[ext_resource type="PackedScene" uid="uid://dxurgh3yjxu0u" path="res://Models/Characters/gltf/Knight.glb" id="1_jsv5k"]
+
+[node name="Knight" unique_id=581291107 instance=ExtResource("1_jsv5k")]
+
+[node name="1H_Sword_Offhand" parent="Rig/Skeleton3D/handslot_l" parent_id_path=PackedInt32Array(247879787) index="0" unique_id=1025628108]
+visible = false
+
+[node name="Badge_Shield" parent="Rig/Skeleton3D/handslot_l" parent_id_path=PackedInt32Array(247879787) index="1" unique_id=206443852]
+visible = false
+
+[node name="Rectangle_Shield" parent="Rig/Skeleton3D/handslot_l" parent_id_path=PackedInt32Array(247879787) index="2" unique_id=357664403]
+visible = false
+
+[node name="Round_Shield" parent="Rig/Skeleton3D/handslot_l" parent_id_path=PackedInt32Array(247879787) index="3" unique_id=1106051524]
+visible = false
+
+[node name="Spike_Shield" parent="Rig/Skeleton3D/handslot_l" parent_id_path=PackedInt32Array(247879787) index="4" unique_id=2035104906]
+visible = false
+
+[node name="1H_Sword" parent="Rig/Skeleton3D/handslot_r" parent_id_path=PackedInt32Array(2067376978) index="0" unique_id=330541384]
+visible = false
+
+[node name="2H_Sword" parent="Rig/Skeleton3D/handslot_r" parent_id_path=PackedInt32Array(2067376978) index="1" unique_id=82830606]
+visible = false
