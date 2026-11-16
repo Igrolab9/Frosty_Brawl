@@ -1,11 +1,13 @@
 [gd_scene format=3 uid="uid://beodei6bk3moc"]
 
+[ext_resource type="Script" uid="uid://dntbqwhtvpnmp" path="res://Scripts/Player/DefaultPlayer.gd" id="1_1yluj"]
 [ext_resource type="PackedScene" uid="uid://caxh4er3ol3rc" path="res://Scenes/Characters/knight.tscn" id="1_jp62t"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_1yluj"]
 height = 2.3587646
 
 [node name="Knight_player" type="CharacterBody3D" unique_id=351704659]
+script = ExtResource("1_1yluj")
 
 [node name="Knight" parent="." unique_id=581291107 instance=ExtResource("1_jp62t")]
 
@@ -13,5 +15,5 @@ height = 2.3587646
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.1967163, 0)
 shape = SubResource("CapsuleShape3D_1yluj")
 
-[node name="Camera3D" type="Camera3D" parent="." unique_id=1627262636]
-transform = Transform3D(-0.99999994, -2.2626677e-08, 8.444392e-08, 0, 0.96592575, 0.25881904, -8.742277e-08, 0.258819, -0.9659258, 0, 2.146545, -4.0279474)
+[node name="Camera3D" type="Camera3D" parent="." unique_id=564994450]
+transform = Transform3D(-0.99999994, -3.3715196e-08, 8.065995e-08, 0, 0.92264223, 0.3856569, -8.742277e-08, 0.38565686, -0.9226423, -2.9968486e-08, 3.4258902, -3.685148)

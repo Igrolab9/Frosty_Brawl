@@ -1,26 +1,81 @@
 [gd_scene format=3 uid="uid://caxh4er3ol3rc"]
 
 [ext_resource type="PackedScene" uid="uid://dxurgh3yjxu0u" path="res://Models/Characters/gltf/Knight.glb" id="1_jsv5k"]
+[ext_resource type="Script" uid="uid://cmlelqjsmdqf5" path="res://Scripts/Player/Players_models/CharacterAnimator.gd" id="2_7j8xp"]
 
 [node name="Knight" unique_id=581291107 instance=ExtResource("1_jsv5k")]
 
-[node name="1H_Sword_Offhand" parent="Rig/Skeleton3D/handslot_l" parent_id_path=PackedInt32Array(247879787) index="0" unique_id=1025628108]
+[node name="Skeleton3D" parent="Rig" parent_id_path=PackedInt32Array(1990154800) index="0" unique_id=1624920711]
+bones/1/position = Vector3(0, 0.39206383, 0)
+bones/4/rotation = Quaternion(-0.5879524, -0.10844584, -0.6453981, 0.47540808)
+bones/5/rotation = Quaternion(1.1752188e-08, -4.7355186e-08, -0.4973854, 0.86752975)
+bones/7/rotation = Quaternion(-0.3166774, -0.34757897, 0.22899796, 0.8523287)
+bones/8/position = Vector3(8.348007e-10, 0.09612501, -0.057500035)
+bones/8/rotation = Quaternion(-3.6585996e-09, 6.8781096e-09, -0.7071068, 0.7071067)
+bones/9/rotation = Quaternion(-0.5802813, 0.1582846, 0.66605324, 0.44112664)
+bones/10/rotation = Quaternion(8.198566e-09, 4.5651234e-08, 0.42497087, 0.90520704)
+bones/12/rotation = Quaternion(-0.35023588, 0.29147267, -0.19676158, 0.8681379)
+bones/13/position = Vector3(-8.348433e-10, 0.096125185, -0.057500005)
+bones/13/rotation = Quaternion(-1.0244433e-09, -4.24391e-09, 0.7071068, 0.7071067)
+bones/15/position = Vector3(0.17094505, 0.11358726, 1.3923275e-08)
+bones/15/rotation = Quaternion(0.99589103, -1.284075e-07, -1.611802e-08, 0.09056075)
+bones/16/rotation = Quaternion(0.2913201, 6.604875e-08, -2.0231221e-07, 0.95662564)
+bones/17/rotation = Quaternion(-0.55491084, -3.3251467e-08, 7.407456e-09, 0.8319099)
+bones/18/rotation = Quaternion(-3.047909e-08, 0.9203548, -0.39108446, 6.948485e-08)
+bones/19/position = Vector3(-0.17094505, 0.11358726, 1.3923275e-08)
+bones/19/rotation = Quaternion(0.99589103, 1.346248e-07, -2.7306672e-08, 0.09056075)
+bones/20/rotation = Quaternion(0.2913201, -6.6048756e-08, 2.0231222e-07, 0.95662564)
+bones/21/rotation = Quaternion(-0.55491084, 1.9804945e-07, -7.8918376e-08, 0.8319099)
+bones/22/rotation = Quaternion(3.0479082e-08, 0.9203548, -0.39108446, -6.948485e-08)
+bones/23/rotation = Quaternion(0.7071068, -2.2930234e-07, -4.6055177e-08, 0.7071068)
+bones/24/rotation = Quaternion(-0.7071068, -7.052851e-08, -7.0528486e-08, 0.7071068)
+bones/25/rotation = Quaternion(7.1054375e-15, -1.3832117e-22, 1, -2.3398295e-34)
+bones/26/rotation = Quaternion(-1.04035244e-07, 0.39108434, 0.92035484, -2.952605e-08)
+bones/28/rotation = Quaternion(1, -3.108627e-15, 1.947072e-07, -3.4586944e-22)
+bones/30/rotation = Quaternion(0.7071068, -3.823849e-08, 1.4500867e-07, 0.7071068)
+bones/31/rotation = Quaternion(-0.7071068, -7.0528515e-08, -7.05285e-08, 0.7071068)
+bones/32/rotation = Quaternion(7.1054375e-15, -1.3832107e-22, 1, -2.3398307e-34)
+bones/33/rotation = Quaternion(-1.0403522e-07, 0.39108434, 0.92035484, -2.9526058e-08)
+bones/35/rotation = Quaternion(1, 4.4408654e-16, 1.947072e-07, 1.546157e-29)
+bones/37/rotation = Quaternion(-0.7071068, -7.279511e-08, -7.279509e-08, 0.7071068)
+bones/38/position = Vector3(0.52084064, 0.7883122, 0.03702944)
+bones/38/rotation = Quaternion(0.7946267, -1.1175871e-07, 0.6070983, -5.9604645e-08)
+bones/39/rotation = Quaternion(-0.7071068, -7.279511e-08, -7.279509e-08, 0.7071068)
+bones/40/position = Vector3(-0.5392437, 0.7835788, 0.05973691)
+bones/40/rotation = Quaternion(-0.7582528, -1.527369e-07, 0.65196073, -1.1175871e-08)
+
+[node name="handslot_l" parent="Rig/Skeleton3D" index="0" unique_id=247879787]
+transform = Transform3D(2.324922e-07, 0.26286304, 0.96483237, 0.9999991, 8.9406875e-08, 1.5356467e-07, 3.0341232e-07, 0.96483237, -0.26286313, 0.504334, 0.64089936, 0.0882469)
+
+[node name="1H_Sword_Offhand" parent="Rig/Skeleton3D/handslot_l" index="0" unique_id=1025628108]
 visible = false
 
-[node name="Badge_Shield" parent="Rig/Skeleton3D/handslot_l" parent_id_path=PackedInt32Array(247879787) index="1" unique_id=206443852]
+[node name="Badge_Shield" parent="Rig/Skeleton3D/handslot_l" index="1" unique_id=206443852]
 visible = false
 
-[node name="Rectangle_Shield" parent="Rig/Skeleton3D/handslot_l" parent_id_path=PackedInt32Array(247879787) index="2" unique_id=357664403]
+[node name="Rectangle_Shield" parent="Rig/Skeleton3D/handslot_l" index="2" unique_id=357664403]
 visible = false
 
-[node name="Round_Shield" parent="Rig/Skeleton3D/handslot_l" parent_id_path=PackedInt32Array(247879787) index="3" unique_id=1106051524]
+[node name="Round_Shield" parent="Rig/Skeleton3D/handslot_l" index="3" unique_id=1106051524]
 visible = false
 
-[node name="Spike_Shield" parent="Rig/Skeleton3D/handslot_l" parent_id_path=PackedInt32Array(247879787) index="4" unique_id=2035104906]
+[node name="Spike_Shield" parent="Rig/Skeleton3D/handslot_l" index="4" unique_id=2035104906]
 visible = false
 
-[node name="1H_Sword" parent="Rig/Skeleton3D/handslot_r" parent_id_path=PackedInt32Array(2067376978) index="0" unique_id=330541384]
+[node name="handslot_r" parent="Rig/Skeleton3D" index="1" unique_id=2067376978]
+transform = Transform3D(4.2466445e-07, -0.1498941, -0.9887013, -0.99999917, -2.0861631e-07, 4.553008e-09, -4.639653e-07, 0.98870134, -0.14989428, -0.5244546, 0.63744885, 0.10273696)
+
+[node name="1H_Sword" parent="Rig/Skeleton3D/handslot_r" index="0" unique_id=330541384]
 visible = false
 
-[node name="2H_Sword" parent="Rig/Skeleton3D/handslot_r" parent_id_path=PackedInt32Array(2067376978) index="1" unique_id=82830606]
+[node name="2H_Sword" parent="Rig/Skeleton3D/handslot_r" index="1" unique_id=82830606]
 visible = false
+
+[node name="head" parent="Rig/Skeleton3D" index="2" unique_id=1794248149]
+transform = Transform3D(1, 0, 1.4210855e-14, 0, 0.99999994, 0, -1.4210855e-14, 0, 1, 0, 1.2278259, 0)
+
+[node name="chest" parent="Rig/Skeleton3D" index="3" unique_id=407249676]
+transform = Transform3D(1, 0, 1.4210855e-14, 0, 0.99999994, 0, -1.4210855e-14, 0, 1, 0, 0.9590293, 0)
+
+[node name="AnimationPlayer" parent="." index="1" unique_id=79654551]
+script = ExtResource("2_7j8xp")

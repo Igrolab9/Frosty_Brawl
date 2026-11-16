@@ -4,7 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://dkmgw7ln5bho6" path="res://Scenes/Platforms/floor_platform.tscn" id="2_i6r31"]
 [ext_resource type="PackedScene" uid="uid://j2sa1kd81e3r" path="res://Scenes/Obstacles/tree.tscn" id="4_rn3qs"]
 [ext_resource type="PackedScene" uid="uid://co2ifsq3j6q5b" path="res://Scenes/Obstacles/pine_tree.tscn" id="5_i6r31"]
-[ext_resource type="PackedScene" uid="uid://cnfppytimmuj" path="res://Scenes/Characters/barbarian_player.tscn" id="6_1hfrj"]
+[ext_resource type="PackedScene" uid="uid://caglwo5xgfh1i" path="res://Scenes/Characters/rogue_player.tscn" id="6_1hfrj"]
 [ext_resource type="PackedScene" uid="uid://cjwynfaucddm1" path="res://Scenes/Obstacles/chest.tscn" id="6_i6r31"]
 
 [node name="Chill_zone" type="Node3D" unique_id=1584586296]
@@ -43,4 +43,4 @@ transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 0, 0, 29.046051)
 [node name="Chest" parent="Obstacles" unique_id=171201030 instance=ExtResource("6_i6r31")]
 transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 0, 6)
 
-[node name="Barbarian_player" parent="." unique_id=134887536 instance=ExtResource("6_1hfrj")]
+[node name="Rogue_player" parent="." unique_id=640572159 instance=ExtResource("6_1hfrj")]

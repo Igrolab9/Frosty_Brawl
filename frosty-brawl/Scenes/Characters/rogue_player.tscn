@@ -1,11 +1,13 @@
 [gd_scene format=3 uid="uid://caglwo5xgfh1i"]
 
+[ext_resource type="Script" uid="uid://dntbqwhtvpnmp" path="res://Scripts/Player/DefaultPlayer.gd" id="1_e847u"]
 [ext_resource type="PackedScene" uid="uid://cj3s2g0lk4y3b" path="res://Scenes/Characters/rogue.tscn" id="1_lu5lb"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_e847u"]
 height = 2.3587646
 
 [node name="Rogue_player" type="CharacterBody3D" unique_id=640572159]
+script = ExtResource("1_e847u")
 
 [node name="Rogue" parent="." unique_id=2006161193 instance=ExtResource("1_lu5lb")]
 
@@ -13,5 +15,5 @@ height = 2.3587646
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.1967163, 0)
 shape = SubResource("CapsuleShape3D_e847u")
 
-[node name="Camera3D" type="Camera3D" parent="." unique_id=50040750]
-transform = Transform3D(-0.99999994, -2.2626677e-08, 8.444392e-08, 0, 0.96592575, 0.25881904, -8.742277e-08, 0.258819, -0.9659258, 0, 2.146545, -4.0279474)
+[node name="Camera3D" type="Camera3D" parent="." unique_id=161595749]
+transform = Transform3D(-0.99999994, -3.3715196e-08, 8.065995e-08, 0, 0.92264223, 0.3856569, -8.742277e-08, 0.38565686, -0.9226423, -2.9968486e-08, 3.4258902, -3.685148)
