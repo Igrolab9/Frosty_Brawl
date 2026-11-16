@@ -7,11 +7,13 @@ extends CharacterBody3D
 var _movement: MovementComponent
 var _animation: AnimationComponent
 
+@onready var camera: Camera3D = $Camera3D
+
 func _ready() -> void:
 	var animator := _find_animator(self)
 	assert(animator != null, "Player: внутри модели нет CharacterAnimator! Открой сцену модели и прикрепи CharacterAnimator.gd к AnimationPlayer.")
 
-	_movement = MovementComponent.new(self)
+	_movement = MovementComponent.new(self, camera)
 	_animation = AnimationComponent.new(animator)
 
 func _physics_process(delta: float) -> void:
