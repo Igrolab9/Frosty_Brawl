@@ -1,18 +1,19 @@
 [gd_scene format=3 uid="uid://drbfb4p0pddkd"]
 
-[ext_resource type="Texture2D" uid="uid://c31ub3qv1k885" path="res://Pictures/Textures/snow-1.jpg" id="1_pqs3d"]
+[ext_resource type="Script" uid="uid://b1get4m4gc81y" path="res://Scripts/Obstacles/snow_ball.gd" id="1_da1bf"]
+[ext_resource type="Texture2D" uid="uid://g0esof6ysjel" path="res://Pictures/Textures/snow_seamless_texture_5148.jpg" id="1_pqs3d"]
 [ext_resource type="Texture2D" uid="uid://by4i35e5e20bd" path="res://Pictures/Textures/snow-1-4.jpg" id="2_da1bf"]
 
 [sub_resource type="SphereMesh" id="SphereMesh_xrivr"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_kaac3"]
 albedo_texture = ExtResource("1_pqs3d")
-normal_enabled = true
 normal_texture = ExtResource("2_da1bf")
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_xrivr"]
 
 [node name="Snow_ball" type="RigidBody3D" unique_id=1647429846]
+script = ExtResource("1_da1bf")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1334363682]
 mesh = SubResource("SphereMesh_xrivr")

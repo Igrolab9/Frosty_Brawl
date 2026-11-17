@@ -4,8 +4,14 @@
 [ext_resource type="PackedScene" uid="uid://dkmgw7ln5bho6" path="res://Scenes/Platforms/floor_platform.tscn" id="2_i6r31"]
 [ext_resource type="PackedScene" uid="uid://j2sa1kd81e3r" path="res://Scenes/Obstacles/tree.tscn" id="4_rn3qs"]
 [ext_resource type="PackedScene" uid="uid://co2ifsq3j6q5b" path="res://Scenes/Obstacles/pine_tree.tscn" id="5_i6r31"]
-[ext_resource type="PackedScene" uid="uid://caglwo5xgfh1i" path="res://Scenes/Characters/rogue_player.tscn" id="6_1hfrj"]
 [ext_resource type="PackedScene" uid="uid://cjwynfaucddm1" path="res://Scenes/Obstacles/chest.tscn" id="6_i6r31"]
+[ext_resource type="PackedScene" uid="uid://ca1e3ykjcnnoq" path="res://Scenes/Platforms/block_large_tall.tscn" id="6_lh3ep"]
+[ext_resource type="PackedScene" uid="uid://bo1d3jyo1lek1" path="res://Scenes/Platforms/block_large.tscn" id="7_lh3ep"]
+[ext_resource type="PackedScene" uid="uid://cc6xe3vldkn50" path="res://Scenes/Platforms/wooden_platform.tscn" id="8_oaldl"]
+[ext_resource type="ArrayMesh" uid="uid://ddxrpqnx44gsl" path="res://Models/Platforms/OBJ format/rocks.obj" id="9_6mnua"]
+[ext_resource type="ArrayMesh" uid="uid://c35b8mwf8pu86" path="res://Models/Platforms/OBJ format/stones.obj" id="10_lyd5q"]
+[ext_resource type="PackedScene" uid="uid://fqohmugbl7rw" path="res://Scenes/Obstacles/trap_spikes.tscn" id="11_u6qts"]
+[ext_resource type="PackedScene" uid="uid://btjh3g1ubxbqf" path="res://Scenes/Characters/mage_player.tscn" id="12_u6qts"]
 
 [node name="Chill_zone" type="Node3D" unique_id=1584586296]
 
@@ -37,10 +43,242 @@ transform = Transform3D(100, 0, 0, 0, 100, 0, 0, 0, 100, 0, 0, 0)
 [node name="Tree" parent="Obstacles" unique_id=1704054141 instance=ExtResource("4_rn3qs")]
 transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 25.878105, 0, 43.09649)
 
+[node name="Tree2" parent="Obstacles" unique_id=21949319 instance=ExtResource("4_rn3qs")]
+transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, -2.6130753, 0, -80.65514)
+
+[node name="Tree3" parent="Obstacles" unique_id=1268883017 instance=ExtResource("4_rn3qs")]
+transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, -75.52185, 0, -80.63447)
+
+[node name="Tree4" parent="Obstacles" unique_id=1313425210 instance=ExtResource("4_rn3qs")]
+transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, -69.84085, 0, 32.432487)
+
+[node name="Tree5" parent="Obstacles" unique_id=403425022 instance=ExtResource("4_rn3qs")]
+transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 53.341545, 0, -28.490273)
+
+[node name="Tree6" parent="Obstacles" unique_id=686658534 instance=ExtResource("4_rn3qs")]
+transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, -14.159421, 0, -28.490273)
+
+[node name="Tree7" parent="Obstacles" unique_id=1219935006 instance=ExtResource("4_rn3qs")]
+transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 71.36071, 0, 64.16468)
+
+[node name="Tree8" parent="Obstacles" unique_id=1557814942 instance=ExtResource("4_rn3qs")]
+transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 71.36071, 0, -77.79375)
+
 [node name="Pine_tree" parent="Obstacles" unique_id=696224058 instance=ExtResource("5_i6r31")]
-transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 0, 0, 29.046051)
+transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, -21.69423, 0, 29.046051)
+
+[node name="Pine_tree2" parent="Obstacles" unique_id=1571097143 instance=ExtResource("5_i6r31")]
+transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 62.215256, 0, 9.006088)
+
+[node name="Pine_tree3" parent="Obstacles" unique_id=303096224 instance=ExtResource("5_i6r31")]
+transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 23.905807, 0, -55.89888)
+
+[node name="Pine_tree4" parent="Obstacles" unique_id=1648415006 instance=ExtResource("5_i6r31")]
+transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, -79.09663, 0, -35.01944)
+
+[node name="Pine_tree5" parent="Obstacles" unique_id=223043338 instance=ExtResource("5_i6r31")]
+transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, -49.43306, 0, -32.44574)
+
+[node name="Pine_tree6" parent="Obstacles" unique_id=1530632081 instance=ExtResource("5_i6r31")]
+transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 24.79486, 0, 1.640213)
+
+[node name="Pine_tree7" parent="Obstacles" unique_id=2114275903 instance=ExtResource("5_i6r31")]
+transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, -54.16136, 0, 69.87344)
+
+[node name="Pine_tree8" parent="Obstacles" unique_id=402179204 instance=ExtResource("5_i6r31")]
+transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, -21.69423, 0, -59.53672)
 
 [node name="Chest" parent="Obstacles" unique_id=171201030 instance=ExtResource("6_i6r31")]
-transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 0, 6)
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -55.789444, 0, 6)
 
-[node name="Rogue_player" parent="." unique_id=640572159 instance=ExtResource("6_1hfrj")]
+[node name="Chest2" parent="Obstacles" unique_id=1318508772 instance=ExtResource("6_i6r31")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 35.616386, 0, -50.64607)
+
+[node name="Chest3" parent="Obstacles" unique_id=1994835414 instance=ExtResource("6_i6r31")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -37.93385, 0, -53.21385)
+
+[node name="Chest4" parent="Obstacles" unique_id=890473639 instance=ExtResource("6_i6r31")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 1.2052841, 0, 73.49844)
+
+[node name="Chest5" parent="Obstacles" unique_id=1055933218 instance=ExtResource("6_i6r31")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 48.79104, 0, 6)
+
+[node name="Block_large_tall" parent="Obstacles" unique_id=869551593 instance=ExtResource("6_lh3ep")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 87.61223, 0, 0)
+
+[node name="Block_large_tall2" parent="Obstacles" unique_id=1550811865 instance=ExtResource("6_lh3ep")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 84.30979, 0, 0.35697174)
+
+[node name="Block_large_tall3" parent="Obstacles" unique_id=98536469 instance=ExtResource("6_lh3ep")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 84.30979, 0, 3.9512424)
+
+[node name="Block_large" parent="Obstacles" unique_id=1469259020 instance=ExtResource("7_lh3ep")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 80.2593, 0, 0)
+
+[node name="Block_large_tall13" parent="Obstacles" unique_id=532909828 instance=ExtResource("6_lh3ep")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -22.829903, 0, 78.15381)
+
+[node name="Block_large_tall14" parent="Obstacles" unique_id=282409945 instance=ExtResource("6_lh3ep")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -26.13234, 0, 78.51078)
+
+[node name="Block_large_tall15" parent="Obstacles" unique_id=324632384 instance=ExtResource("6_lh3ep")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -26.13234, 0, 82.10505)
+
+[node name="Block_large5" parent="Obstacles" unique_id=854128565 instance=ExtResource("7_lh3ep")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -30.18283, 0, 78.15381)
+
+[node name="Block_large_tall16" parent="Obstacles" unique_id=1315527670 instance=ExtResource("6_lh3ep")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -77.85471, 0, -9.530304)
+
+[node name="Block_large_tall17" parent="Obstacles" unique_id=224457082 instance=ExtResource("6_lh3ep")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -81.15714, 0, -9.173332)
+
+[node name="Block_large_tall18" parent="Obstacles" unique_id=1760537775 instance=ExtResource("6_lh3ep")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -81.15714, 0, -5.5790634)
+
+[node name="Block_large6" parent="Obstacles" unique_id=2144199463 instance=ExtResource("7_lh3ep")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -85.207634, 0, -1.1399612)
+
+[node name="Block_large_tall19" parent="Obstacles" unique_id=858726408 instance=ExtResource("6_lh3ep")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -16.083122, 0, -82.04038)
+
+[node name="Block_large_tall20" parent="Obstacles" unique_id=1811072476 instance=ExtResource("6_lh3ep")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -19.385551, 0, -81.6834)
+
+[node name="Block_large_tall21" parent="Obstacles" unique_id=2101228043 instance=ExtResource("6_lh3ep")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -19.385551, 0, -78.089134)
+
+[node name="Block_large7" parent="Obstacles" unique_id=1502416044 instance=ExtResource("7_lh3ep")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -23.436043, 0, -82.04038)
+
+[node name="Wooden_platform" parent="Obstacles" unique_id=1210256469 instance=ExtResource("8_oaldl")]
+transform = Transform3D(2.8096294, -1.0516573, 0, 1.0516573, 2.8096294, 0, 0, 0, 3, 77.58351, 0.30975708, -0.35758924)
+
+[node name="Block_large_tall4" parent="Obstacles" unique_id=1127764098 instance=ExtResource("6_lh3ep")]
+transform = Transform3D(1.3083508, 0, 1.5126858, 0, 2, 0, -1.5126858, 0, 1.3083508, 50.30909, 0, 24.758415)
+
+[node name="Block_large_tall5" parent="Obstacles" unique_id=1623918892 instance=ExtResource("6_lh3ep")]
+transform = Transform3D(1.3083508, 0, 1.5126858, 0, 2, 0, -1.5126858, 0, 1.3083508, 47.006653, 0, 25.115387)
+
+[node name="Block_large_tall6" parent="Obstacles" unique_id=431477958 instance=ExtResource("6_lh3ep")]
+transform = Transform3D(1.3083508, 0, 1.5126858, 0, 2, 0, -1.5126858, 0, 1.3083508, 47.006653, 0, 28.709658)
+
+[node name="Block_large2" parent="Obstacles" unique_id=1799727972 instance=ExtResource("7_lh3ep")]
+transform = Transform3D(1.3083508, 0, 1.5126858, 0, 2, 0, -1.5126858, 0, 1.3083508, 42.95616, 0, 24.758415)
+
+[node name="Block_large_tall7" parent="Obstacles" unique_id=434507371 instance=ExtResource("6_lh3ep")]
+transform = Transform3D(0.5274215, 0, 1.9292037, 0, 2, 0, -1.9292037, 0, 0.5274215, 6.7764664, 0, -12.893784)
+
+[node name="Block_large_tall8" parent="Obstacles" unique_id=475553374 instance=ExtResource("6_lh3ep")]
+transform = Transform3D(0.5274215, 0, 1.9292037, 0, 2, 0, -1.9292037, 0, 0.5274215, 3.4740295, 0, -12.536812)
+
+[node name="Block_large_tall9" parent="Obstacles" unique_id=1650148393 instance=ExtResource("6_lh3ep")]
+transform = Transform3D(0.5274215, 0, 1.9292037, 0, 2, 0, -1.9292037, 0, 0.5274215, 3.4740295, 0, -8.942541)
+
+[node name="Block_large3" parent="Obstacles" unique_id=1755415834 instance=ExtResource("7_lh3ep")]
+transform = Transform3D(0.5274215, 0, 1.9292037, 0, 2, 0, -1.9292037, 0, 0.5274215, -0.5764618, 0, -12.893784)
+
+[node name="Block_large_tall10" parent="Obstacles" unique_id=1239757549 instance=ExtResource("6_lh3ep")]
+transform = Transform3D(0.5274215, 0, 1.9292037, 0, 2, 0, -1.9292037, 0, 0.5274215, 2.400072, 0, 3.1142025)
+
+[node name="Block_large_tall11" parent="Obstacles" unique_id=1390689169 instance=ExtResource("6_lh3ep")]
+transform = Transform3D(0.5274215, 0, 1.9292037, 0, 2, 0, -1.9292037, 0, 0.5274215, -0.90236473, 0, 3.4711742)
+
+[node name="Block_large_tall12" parent="Obstacles" unique_id=1967806553 instance=ExtResource("6_lh3ep")]
+transform = Transform3D(0.5274215, 0, 1.9292037, 0, 2, 0, -1.9292037, 0, 0.5274215, -0.90236473, 0, 7.065445)
+
+[node name="Block_large4" parent="Obstacles" unique_id=640813957 instance=ExtResource("7_lh3ep")]
+transform = Transform3D(0.5274215, 0, 1.9292037, 0, 2, 0, -1.9292037, 0, 0.5274215, -2.088256, 0, 10.600558)
+
+[node name="Wooden_platform2" parent="Obstacles" unique_id=791319087 instance=ExtResource("8_oaldl")]
+transform = Transform3D(1.8827263, 0, -0.67479, 0, 2, 0, 0.67479, 0, 1.8827263, 1.1011548, 3.7434878, 0.75691175)
+
+[node name="Wooden_platform3" parent="Obstacles" unique_id=14583006 instance=ExtResource("8_oaldl")]
+transform = Transform3D(1.8827263, 0, -0.67479, 0, 2, 0, 0.67479, 0, 1.8827263, 1.7085092, 3.7434878, -0.93766296)
+
+[node name="Wooden_platform4" parent="Obstacles" unique_id=2106445123 instance=ExtResource("8_oaldl")]
+transform = Transform3D(1.8827263, 0, -0.67479, 0, 2, 0, 0.67479, 0, 1.8827263, 2.2692838, 3.7434878, -2.5022755)
+
+[node name="Wooden_platform5" parent="Obstacles" unique_id=1550873808 instance=ExtResource("8_oaldl")]
+transform = Transform3D(1.8827263, 0, -0.67479, 0, 2, 0, 0.67479, 0, 1.8827263, 2.9206057, 3.7434878, -4.319524)
+
+[node name="Wooden_platform6" parent="Obstacles" unique_id=1518832724 instance=ExtResource("8_oaldl")]
+transform = Transform3D(1.8827263, 0, -0.67479, 0, 2, 0, 0.67479, 0, 1.8827263, 3.5328875, 3.7434878, -6.0278463)
+
+[node name="Rocks" type="MeshInstance3D" parent="Obstacles" unique_id=1792726161]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.979, 0, -20.935)
+mesh = ExtResource("9_6mnua")
+
+[node name="Rocks5" type="MeshInstance3D" parent="Obstacles" unique_id=1527109500]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.979, 0, -20.935)
+mesh = ExtResource("9_6mnua")
+
+[node name="Rocks2" type="MeshInstance3D" parent="Obstacles" unique_id=1437323466]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25.768, 0, -1.376)
+mesh = ExtResource("9_6mnua")
+
+[node name="Rocks3" type="MeshInstance3D" parent="Obstacles" unique_id=580415052]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.397, 0, -0.085)
+mesh = ExtResource("9_6mnua")
+
+[node name="Rocks4" type="MeshInstance3D" parent="Obstacles" unique_id=1198655995]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.583988, 0, -26.62408)
+mesh = ExtResource("9_6mnua")
+
+[node name="Rocks6" type="MeshInstance3D" parent="Obstacles" unique_id=320012289]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.721, 0, -25.964)
+mesh = ExtResource("9_6mnua")
+
+[node name="Rocks7" type="MeshInstance3D" parent="Obstacles" unique_id=601497348]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.048, 0, -10.196)
+mesh = ExtResource("9_6mnua")
+
+[node name="Rocks8" type="MeshInstance3D" parent="Obstacles" unique_id=780756210]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -46.221893, 0, -8.347679)
+mesh = ExtResource("9_6mnua")
+
+[node name="Rocks9" type="MeshInstance3D" parent="Obstacles" unique_id=1527170135]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -46.221893, 0, -60.872437)
+mesh = ExtResource("9_6mnua")
+
+[node name="Stones" type="MeshInstance3D" parent="Obstacles" unique_id=1983817848]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -34.341602, 0.061035633, -22.610384)
+mesh = ExtResource("10_lyd5q")
+
+[node name="Stones2" type="MeshInstance3D" parent="Obstacles" unique_id=2041238261]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -39.755825, 0.061035633, -32.91658)
+mesh = ExtResource("10_lyd5q")
+
+[node name="Stones3" type="MeshInstance3D" parent="Obstacles" unique_id=1380840889]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -66.94978, 0.061035633, -23.23626)
+mesh = ExtResource("10_lyd5q")
+
+[node name="Stones4" type="MeshInstance3D" parent="Obstacles" unique_id=1693336791]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 31.224014, 0.061035633, -23.23626)
+mesh = ExtResource("10_lyd5q")
+
+[node name="Stones5" type="MeshInstance3D" parent="Obstacles" unique_id=1519910771]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 31.224014, 0.061035633, 64.83549)
+mesh = ExtResource("10_lyd5q")
+
+[node name="Stones6" type="MeshInstance3D" parent="Obstacles" unique_id=983045371]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -42.99501, 0.061035633, 40.42469)
+mesh = ExtResource("10_lyd5q")
+
+[node name="TrapSpikes" parent="Obstacles" unique_id=1155973088 instance=ExtResource("11_u6qts")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -6.3015556, 0, 26.085022)
+
+[node name="TrapSpikes2" parent="Obstacles" unique_id=122653460 instance=ExtResource("11_u6qts")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 59.433628, 0, -59.86585)
+
+[node name="TrapSpikes3" parent="Obstacles" unique_id=953392116 instance=ExtResource("11_u6qts")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -59.917896, 0, -23.347748)
+
+[node name="TrapSpikes4" parent="Obstacles" unique_id=725986989 instance=ExtResource("11_u6qts")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 12.690968, 0, -68.60904)
+
+[node name="TrapSpikes5" parent="Obstacles" unique_id=43014336 instance=ExtResource("11_u6qts")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 67.097244, 0, 29.824425)
+
+[node name="Mage_player" parent="." unique_id=1540482417 instance=ExtResource("12_u6qts")]
+transform = Transform3D(0.5386374, 0, -0.84253776, 0, 1, 0, 0.84253776, 0, 0.5386374, -83.82516, 0, -75.39892)

@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://dntbqwhtvpnmp" path="res://Scripts/Player/DefaultPlayer.gd" id="1_1yluj"]
 [ext_resource type="PackedScene" uid="uid://caxh4er3ol3rc" path="res://Scenes/Characters/knight.tscn" id="1_jp62t"]
+[ext_resource type="Texture2D" uid="uid://dma3ygixq01et" path="res://Pictures/Textures/Cross.png" id="3_iondw"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_1yluj"]
 height = 2.3587646
@@ -17,3 +18,27 @@ shape = SubResource("CapsuleShape3D_1yluj")
 
 [node name="Camera3D" type="Camera3D" parent="." unique_id=564994450]
 transform = Transform3D(-0.99999994, -3.3715196e-08, 8.065995e-08, 0, 0.92264223, 0.3856569, -8.742277e-08, 0.38565686, -0.9226423, -2.9968486e-08, 3.4258902, -3.685148)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=306697881]
+
+[node name="Sprite2D" type="Sprite2D" parent="CanvasLayer" unique_id=1869894366]
+position = Vector2(585, 181)
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("3_iondw")
+
+[node name="Health_slider" type="HSlider" parent="CanvasLayer" unique_id=543427613]
+offset_left = 113.0
+offset_top = 4.0
+offset_right = 433.0
+offset_bottom = 20.0
+scale = Vector2(1, 2.0800002)
+max_value = 10.0
+metadata/_edit_use_anchors_ = true
+
+[node name="Health_label" type="Label" parent="CanvasLayer" unique_id=1555949863]
+offset_left = 8.0
+offset_top = 3.0
+offset_right = 48.0
+offset_bottom = 26.0
+theme_override_font_sizes/font_size = 24
+metadata/_edit_use_anchors_ = true

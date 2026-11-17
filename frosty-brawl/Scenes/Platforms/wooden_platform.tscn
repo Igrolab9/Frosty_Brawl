@@ -1,0 +1,15 @@
+[gd_scene format=3 uid="uid://cc6xe3vldkn50"]
+
+[ext_resource type="ArrayMesh" uid="uid://c1y1jptjccq2c" path="res://Models/Platforms/OBJ format/platform.obj" id="1_d8oel"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_xrivr"]
+size = Vector3(1, 0.20800781, 1)
+
+[node name="Wooden_platform" type="StaticBody3D" unique_id=1210256469]
+
+[node name="Platform" type="MeshInstance3D" parent="." unique_id=892291017]
+mesh = ExtResource("1_d8oel")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1677525662]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.08935547, 0)
+shape = SubResource("BoxShape3D_xrivr")

@@ -1,0 +1,15 @@
+[gd_scene format=3 uid="uid://ca1e3ykjcnnoq"]
+
+[ext_resource type="ArrayMesh" uid="uid://bmjv5iy05chga" path="res://Models/Platforms/OBJ format/block-snow-large-tall.obj" id="1_21taf"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_xrivr"]
+size = Vector3(2.0762253, 1.9859924, 2.083496)
+
+[node name="Block_large_tall" type="StaticBody3D" unique_id=869551593]
+
+[node name="BlockSnowLargeTall" type="MeshInstance3D" parent="." unique_id=1871823138]
+mesh = ExtResource("1_21taf")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=723154419]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0026741028, 1.0072174, 0.0026855469)
+shape = SubResource("BoxShape3D_xrivr")

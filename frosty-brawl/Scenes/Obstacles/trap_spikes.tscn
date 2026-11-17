@@ -1,0 +1,28 @@
+[gd_scene format=3 uid="uid://fqohmugbl7rw"]
+
+[ext_resource type="Script" uid="uid://bqunawfrjesws" path="res://Scripts/Obstacles/trap_spikes.gd" id="1_0w7q0"]
+[ext_resource type="ArrayMesh" uid="uid://ilylmwqdeov8" path="res://Models/Platforms/OBJ format/trap-spikes.obj" id="1_g5qtm"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_xrivr"]
+size = Vector3(0.6470337, 0.25628662, 0.6323242)
+
+[sub_resource type="BoxMesh" id="BoxMesh_xrivr"]
+size = Vector3(1, 0.059814453, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_13qdw"]
+albedo_color = Color(0.96862745, 0.039215688, 0.039215688, 0.24313726)
+
+[node name="TrapSpikes" type="Area3D" unique_id=725986989]
+script = ExtResource("1_0w7q0")
+
+[node name="TrapSpikes" type="MeshInstance3D" parent="." unique_id=1444317168]
+mesh = ExtResource("1_g5qtm")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=53776503]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00015258789, 0.12771606, -0.0021972656)
+shape = SubResource("BoxShape3D_xrivr")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1258863246]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.028015137, 0)
+mesh = SubResource("BoxMesh_xrivr")
+surface_material_override/0 = SubResource("StandardMaterial3D_13qdw")

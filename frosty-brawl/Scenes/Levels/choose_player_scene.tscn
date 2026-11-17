@@ -1,0 +1,42 @@
+[gd_scene format=3 uid="uid://b04x0fo306548"]
+
+[ext_resource type="Texture2D" uid="uid://b7btwofydxgcm" path="res://Pictures/Choose_player_pic.png" id="1_ft5ls"]
+
+[node name="Choose_player_scene" type="CanvasLayer" unique_id=2096928099]
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1633592474]
+position = Vector2(576, 324)
+scale = Vector2(0.42, 0.42)
+texture = ExtResource("1_ft5ls")
+
+[node name="Mage_button" type="Button" parent="." unique_id=963094527]
+offset_left = 155.0
+offset_top = 497.0
+offset_right = 283.0
+offset_bottom = 545.0
+theme_override_font_sizes/font_size = 24
+text = "Маг"
+
+[node name="Barbarian_button" type="Button" parent="." unique_id=63927423]
+offset_left = 398.0
+offset_top = 497.0
+offset_right = 526.0
+offset_bottom = 545.0
+theme_override_font_sizes/font_size = 24
+text = "Варвар"
+
+[node name="Knight_button" type="Button" parent="." unique_id=2120795839]
+offset_left = 640.0
+offset_top = 497.0
+offset_right = 768.0
+offset_bottom = 545.0
+theme_override_font_sizes/font_size = 24
+text = "Рыцарь"
+
+[node name="Rough_button" type="Button" parent="." unique_id=178673938]
+offset_left = 873.0
+offset_top = 497.0
+offset_right = 1001.0
+offset_bottom = 545.0
+theme_override_font_sizes/font_size = 24
+text = "Воришка"
