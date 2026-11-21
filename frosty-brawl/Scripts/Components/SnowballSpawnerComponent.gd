@@ -38,6 +38,9 @@ func spawn() -> void:
 		return
 
 	var snowball: RigidBody3D = SNOWBALL_SCENE.instantiate()
+	# ← НОВОЕ: запоминаем, кто бросил (для статистики).
+	# Через set(), т.к. переменная объявлена в скрипте снежка, а тип тут RigidBody3D.
+	snowball.set(&"thrower_key", _owner.name)
 	snowball.scale = Vector3(0.25, 0.25, 0.25)
 
 	snowball.contact_monitor = true
@@ -52,6 +55,7 @@ func spawn() -> void:
 	snowball.linear_damp = 0.4
 
 	_owner.get_tree().root.add_child(snowball)
+	BattleStats.report_throw(_owner.name)  # ← НОВОЕ: +1 бросок (уже после кулдауна и проверок)
 
 	var direction := -_camera.global_basis.z
 	var throw_direction := (direction + Vector3.UP * 0.5).normalized()

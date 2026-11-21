@@ -9,6 +9,8 @@ extends RigidBody3D
 @export var broadcast_sfx: bool = false
 @export var debug_log: bool = true
 
+var thrower_key: StringName = &""  # ← НОВОЕ: имя узла бросившего (ставит спавнер)
+
 var _spawn_time: float = 0.0
 var _has_hit: bool = false
 
@@ -52,6 +54,7 @@ func _on_body_entered(body: Node) -> void:
 	# ── 2. УРОН. Только владелец и только по цели. ──
 	if i_am_owner and body.has_method(&"take_damage"):
 		_deal_damage(body)
+		_report_hit(body)  # ← НОВОЕ: статистика считается там же, где применяется урон
 
 	# ── 3. СМЕРТЬ. В самом конце. ──
 	get_tree().create_timer(0.6).timeout.connect(queue_free)
@@ -62,3 +65,13 @@ func _deal_damage(body: Node) -> void:
 		body.take_damage(damage_amount)
 	else:
 		body.take_damage.rpc_id(body.get_multiplayer_authority(), damage_amount)
+
+
+# ← НОВОЕ: +1 попадание бросившему.
+# Только по игроку (стены/пол/сундуки точность не портят и не улучшают),
+# не по себе, и только если бросивший известен.
+func _report_hit(body: Node) -> void:
+	if thrower_key == &"":
+		return
+	if body is Player and body.name != thrower_key:
+		BattleStats.report_hit(thrower_key)
