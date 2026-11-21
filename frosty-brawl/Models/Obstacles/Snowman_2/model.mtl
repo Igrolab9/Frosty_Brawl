@@ -1,0 +1,4 @@
+newmtl snowman_Mat
+Kd 1 1 1
+map_Kd snowman_Mat.png
+

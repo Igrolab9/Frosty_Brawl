@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://bfxqgrdabv1s5"]
+
+[ext_resource type="ArrayMesh" uid="uid://coqxa0klcpl1v" path="res://Models/Obstacles/Snowman_2/model.obj" id="1_b26fx"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_xrivr"]
+height = 53.256775
+radius = 15.037109
+
+[node name="Snowman_2" type="StaticBody3D" unique_id=807305225]
+
+[node name="Model" type="MeshInstance3D" parent="." unique_id=1795609555]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 28.748539, 0)
+mesh = ExtResource("1_b26fx")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1569075255]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 26.924042, 0)
+shape = SubResource("CylinderShape3D_xrivr")

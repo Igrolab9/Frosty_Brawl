@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://c2r2dfabepkni"]
+
+[ext_resource type="ArrayMesh" uid="uid://d16sfq3vj7ch5" path="res://Models/Obstacles/Christmas_tree/model.obj" id="1_c5q3u"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_b1lj4"]
+height = 0.13128662
+radius = 0.020507813
+
+[node name="Christmas_tree" type="StaticBody3D" unique_id=1189465853]
+
+[node name="Model" type="MeshInstance3D" parent="." unique_id=1385639543]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.06756779, 0)
+mesh = ExtResource("1_c5q3u")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1731600618]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.06613159, 0)
+shape = SubResource("CylinderShape3D_b1lj4")

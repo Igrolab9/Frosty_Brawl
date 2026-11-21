@@ -1,5 +1,6 @@
 [gd_scene format=3 uid="uid://d3sbpfkyqyegf"]
 
+[ext_resource type="Script" uid="uid://c23dkpdhlt0cu" path="res://Scripts/chill_zone.gd" id="1_31l66"]
 [ext_resource type="PackedScene" uid="uid://l0jb7m8vg0ui" path="res://Scenes/Platforms/wall.tscn" id="2_dydoi"]
 [ext_resource type="PackedScene" uid="uid://dkmgw7ln5bho6" path="res://Scenes/Platforms/floor_platform.tscn" id="2_i6r31"]
 [ext_resource type="PackedScene" uid="uid://j2sa1kd81e3r" path="res://Scenes/Obstacles/tree.tscn" id="4_rn3qs"]
@@ -11,9 +12,12 @@
 [ext_resource type="ArrayMesh" uid="uid://ddxrpqnx44gsl" path="res://Models/Platforms/OBJ format/rocks.obj" id="9_6mnua"]
 [ext_resource type="ArrayMesh" uid="uid://c35b8mwf8pu86" path="res://Models/Platforms/OBJ format/stones.obj" id="10_lyd5q"]
 [ext_resource type="PackedScene" uid="uid://fqohmugbl7rw" path="res://Scenes/Obstacles/trap_spikes.tscn" id="11_u6qts"]
-[ext_resource type="PackedScene" uid="uid://btjh3g1ubxbqf" path="res://Scenes/Characters/mage_player.tscn" id="12_u6qts"]
+[ext_resource type="PackedScene" uid="uid://ccdu3wd766heq" path="res://Scenes/Obstacles/snowman_1.tscn" id="13_31l66"]
+[ext_resource type="PackedScene" uid="uid://bfxqgrdabv1s5" path="res://Scenes/Obstacles/snowman_2.tscn" id="14_3u4do"]
+[ext_resource type="PackedScene" uid="uid://c2r2dfabepkni" path="res://Scenes/Obstacles/christmas_tree.tscn" id="15_shmgd"]
 
 [node name="Chill_zone" type="Node3D" unique_id=1584586296]
+script = ExtResource("1_31l66")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1228631388]
 transform = Transform3D(0.96179974, -7.165967e-09, -0.2737541, 0.26263842, 0.2820647, 0.9227462, 0.07721636, -0.9593954, 0.27128974, -6.300424, 32.959854, 6.2437067)
@@ -80,7 +84,7 @@ transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, -79.09663, 0, -35.01944)
 transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, -49.43306, 0, -32.44574)
 
 [node name="Pine_tree6" parent="Obstacles" unique_id=1530632081 instance=ExtResource("5_i6r31")]
-transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 24.79486, 0, 1.640213)
+transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 38.60795, 0, 1.640213)
 
 [node name="Pine_tree7" parent="Obstacles" unique_id=2114275903 instance=ExtResource("5_i6r31")]
 transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, -54.16136, 0, 69.87344)
@@ -280,5 +284,32 @@ transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 12.690968, 0, -68.60904)
 [node name="TrapSpikes5" parent="Obstacles" unique_id=43014336 instance=ExtResource("11_u6qts")]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 67.097244, 0, 29.824425)
 
-[node name="Mage_player" parent="." unique_id=1540482417 instance=ExtResource("12_u6qts")]
-transform = Transform3D(0.5386374, 0, -0.84253776, 0, 1, 0, 0.84253776, 0, 0.5386374, -83.82516, 0, -75.39892)
+[node name="Snowman_1" parent="Obstacles" unique_id=60021419 instance=ExtResource("13_31l66")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -46, 0, 0)
+
+[node name="Snowman_2" parent="Obstacles" unique_id=1279087128 instance=ExtResource("13_31l66")]
+transform = Transform3D(-0.0068207886, 0, -0.99997675, 0, 1, 0, 0.99997675, 0, -0.0068207886, 39.400024, 0, -28.557789)
+
+[node name="Snowman_3" parent="Obstacles" unique_id=164725112 instance=ExtResource("13_31l66")]
+transform = Transform3D(-0.6954331, 0, -0.718591, 0, 1, 0, 0.718591, 0, -0.6954331, 38.749966, 0, 66.74557)
+
+[node name="Snowman_4" parent="Obstacles" unique_id=24132058 instance=ExtResource("13_31l66")]
+transform = Transform3D(-0.3730357, 0, 0.9278171, 0, 1, 0, -0.9278171, 0, -0.3730357, -38.019695, 0, 32.496452)
+
+[node name="Snowman_5" parent="Obstacles" unique_id=807305225 instance=ExtResource("14_3u4do")]
+transform = Transform3D(-0.074607134, 0, 0.1855634, 0, 0.2, 0, -0.1855634, 0, -0.074607134, 14.58112, 0, 19.120102)
+
+[node name="Christmas_tree" parent="Obstacles" unique_id=1189465853 instance=ExtResource("15_shmgd")]
+transform = Transform3D(200, 0, 0, 0, 200, 0, 0, 0, 200, 19.691631, 0, 0)
+
+[node name="Spawn_point_1" type="Marker3D" parent="." unique_id=2042199254]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -80.81011, 0, -75.53824)
+
+[node name="Spawn_point_2" type="Marker3D" parent="." unique_id=836158494]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 82.64477, 0, -68.29702)
+
+[node name="Spawn_point_3" type="Marker3D" parent="." unique_id=2116496494]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 80.11427, 0, 83.07003)
+
+[node name="Spawn_point_4" type="Marker3D" parent="." unique_id=527945596]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -74.81743, 0, 78.310555)

@@ -1,8 +1,11 @@
 [gd_scene format=3 uid="uid://b04x0fo306548"]
 
 [ext_resource type="Texture2D" uid="uid://b7btwofydxgcm" path="res://Pictures/Choose_player_pic.png" id="1_ft5ls"]
+[ext_resource type="Script" uid="uid://cywexbcqx036h" path="res://Scripts/Option_scenes/choose_player_scene.gd" id="1_kueep"]
 
 [node name="Choose_player_scene" type="CanvasLayer" unique_id=2096928099]
+script = ExtResource("1_kueep")
+game_scene_path = "uid://d3sbpfkyqyegf"
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1633592474]
 position = Vector2(576, 324)
@@ -40,3 +43,11 @@ offset_right = 1001.0
 offset_bottom = 545.0
 theme_override_font_sizes/font_size = 24
 text = "Воришка"
+
+[node name="Start_game_button" type="Button" parent="." unique_id=2141812902]
+offset_left = 500.0
+offset_top = 567.0
+offset_right = 657.0
+offset_bottom = 615.0
+theme_override_font_sizes/font_size = 24
+text = "Начать игру"
