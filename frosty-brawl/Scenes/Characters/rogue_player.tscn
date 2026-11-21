@@ -9,6 +9,7 @@
 height = 2.3587646
 
 [node name="Rogue_player" type="CharacterBody3D" unique_id=640572159]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
 script = ExtResource("1_e847u")
 
 [node name="Rogue" parent="." unique_id=2006161193 instance=ExtResource("1_lu5lb")]

@@ -8,8 +8,8 @@ var _owner: CharacterBody3D
 var _camera: Camera3D
 var _throw_socket: Node3D  # ← точка в правой руке
 
-@export var throw_force: float = 25.0
-@export var hand_forward_offset: float = 0.3  # вынос вперёд от руки, чтобы не задевать её
+@export var throw_force: float = 50.0
+@export var hand_forward_offset: float = 0.25  # вынос вперёд от руки, чтобы не задевать её
 
 # --- НОВОЕ: Настройка кулдауна ---
 @export var cooldown_seconds: float = 1.3
@@ -48,13 +48,13 @@ func spawn() -> void:
 		_on_snowball_hit(body, snowball)
 	)
 
-	snowball.gravity_scale = 1.5
+	snowball.gravity_scale = 1.0
 	snowball.linear_damp = 0.4
 
 	_owner.get_tree().root.add_child(snowball)
 
 	var direction := -_camera.global_basis.z
-	var throw_direction := (direction + Vector3.UP * 0.75).normalized()
+	var throw_direction := (direction + Vector3.UP * 0.5).normalized()
 	
 	snowball.global_position = _throw_socket.global_position + throw_direction * hand_forward_offset
 	snowball.add_collision_exception_with(_owner)

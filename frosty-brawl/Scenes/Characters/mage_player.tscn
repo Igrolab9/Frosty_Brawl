@@ -9,6 +9,7 @@
 height = 2.3587646
 
 [node name="Mage_player" type="CharacterBody3D" unique_id=1540482417]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
 script = ExtResource("1_ycesq")
 
 [node name="Mage" parent="." unique_id=1245301092 instance=ExtResource("1_vn6fb")]
