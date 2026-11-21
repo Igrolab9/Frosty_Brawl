@@ -2,6 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://b7btwofydxgcm" path="res://Pictures/Choose_player_pic.png" id="1_ft5ls"]
 [ext_resource type="Script" uid="uid://cywexbcqx036h" path="res://Scripts/Option_scenes/choose_player_scene.gd" id="1_kueep"]
+[ext_resource type="AudioStream" uid="uid://bvc0jociibsys" path="res://Sounds/Music/Snowball Showdown (Electro-Swing Edition).mp3" id="3_76ubi"]
 
 [node name="Choose_player_scene" type="CanvasLayer" unique_id=2096928099]
 script = ExtResource("1_kueep")
@@ -51,3 +52,7 @@ offset_right = 657.0
 offset_bottom = 615.0
 theme_override_font_sizes/font_size = 24
 text = "Начать игру"
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1828369374]
+stream = ExtResource("3_76ubi")
+autoplay = true

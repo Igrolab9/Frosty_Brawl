@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://be2umbue8rusd"
+path="res://.godot/imported/Snowball Showdown.mp3-30b7e715bcbfd65bc7121bf3c8477271.mp3str"
+
+[deps]
+
+source_file="res://Sounds/Music/Snowball Showdown.mp3"
+dest_files=["res://.godot/imported/Snowball Showdown.mp3-30b7e715bcbfd65bc7121bf3c8477271.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

@@ -1,10 +1,21 @@
 [gd_scene format=3 uid="uid://c2r2dfabepkni"]
 
 [ext_resource type="ArrayMesh" uid="uid://d16sfq3vj7ch5" path="res://Models/Obstacles/Christmas_tree/model.obj" id="1_c5q3u"]
+[ext_resource type="AudioStream" uid="uid://djoeouc7ta6ml" path="res://Sounds/Music/Snowball Showdown (Boss Phase).mp3" id="2_p6x2t"]
+[ext_resource type="AudioStream" uid="uid://ct7o8e5rg16i4" path="res://Sounds/Music/Snowball Showdown (Skate Punk Edition).mp3" id="3_p10wl"]
+[ext_resource type="AudioStream" uid="uid://be2umbue8rusd" path="res://Sounds/Music/Snowball Showdown.mp3" id="5_odga1"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_b1lj4"]
 height = 0.13128662
 radius = 0.020507813
+
+[sub_resource type="AudioStreamPlaylist" id="AudioStreamPlaylist_3r0gd"]
+shuffle = true
+loop = false
+stream_count = 3
+stream_0 = ExtResource("2_p6x2t")
+stream_1 = ExtResource("5_odga1")
+stream_2 = ExtResource("3_p10wl")
 
 [node name="Christmas_tree" type="StaticBody3D" unique_id=1189465853]
 
@@ -15,3 +26,7 @@ mesh = ExtResource("1_c5q3u")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1731600618]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.06613159, 0)
 shape = SubResource("CylinderShape3D_b1lj4")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=524144027]
+stream = SubResource("AudioStreamPlaylist_3r0gd")
+autoplay = true
