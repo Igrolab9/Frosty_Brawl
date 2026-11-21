@@ -16,6 +16,7 @@ var _target_position: Vector3
 var _wait_timer: float = 0.0
 var _is_waiting: bool = false
 var _is_initialized: bool = false
+var _nav_ready: bool = false  # 🆕 Флаг готовности навигации
 
 var _map_min: Vector3 = Vector3(-100, 0, -100)
 var _map_max: Vector3 = Vector3(100, 0, 100)
@@ -28,6 +29,11 @@ func update(delta: float, speed: float, jump_velocity: float) -> void:
 		_setup_navigation()
 		_is_initialized = true
 		print("🤖 Бот инициализирован в точке: ", _spawn_position)
+
+	# 🆕 Ждём готовности навигации перед первым выбором цели
+	if not _nav_ready:
+		_check_navigation_ready()
+		return  # Не двигаемся, пока навигация не готова
 
 	if not _body.is_on_floor():
 		_body.velocity += _body.get_gravity() * delta
@@ -78,9 +84,20 @@ func _setup_navigation() -> void:
 	
 	_spawn_position = _body.global_position
 	_target_position = _spawn_position
+
+# 🆕 Проверяем готовность навигационной карты
+func _check_navigation_ready() -> void:
+	var nav_map := _nav_agent.get_navigation_map()
+	var iteration_id := NavigationServer3D.map_get_iteration_id(nav_map)
 	
-	# 🆕 Откладываем выбор цели на следующий кадр, чтобы карта успела синхронизироваться
-	call_deferred("_choose_new_target")
+	if iteration_id > 0:
+		# Карта синхронизирована, можно выбирать цель
+		_nav_ready = true
+		_choose_new_target()
+		print("✅ Навигация готова! Итерация: ", iteration_id)
+	else:
+		# Карта ещё не готова, пробуем в следующем кадре
+		print("⏳ Ожидание синхронизации навигации...")
 
 func _choose_new_target() -> void:
 	var random_point := Vector3(
