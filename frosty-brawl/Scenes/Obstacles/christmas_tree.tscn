@@ -29,4 +29,3 @@ shape = SubResource("CylinderShape3D_b1lj4")
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=524144027]
 stream = SubResource("AudioStreamPlaylist_3r0gd")
-autoplay = true

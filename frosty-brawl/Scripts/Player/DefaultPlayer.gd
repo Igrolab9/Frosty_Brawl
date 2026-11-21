@@ -6,6 +6,9 @@ extends CharacterBody3D
 @export var player_health: float = 10.0
 @export var throw_socket_path: NodePath
 
+# 🆕 Флаг роли: true = бот, false = человек (управляется через CharacterSpawner)
+@export var is_bot: bool = false
+
 @export_group("Audio")
 @export var audio_container_path: NodePath = ^"Audio"
 @export var audio_bus: StringName = &"Master"
@@ -19,6 +22,7 @@ extends CharacterBody3D
 @export_range(0.0, 0.3) var step_pitch_jitter: float = 0.08
 
 var _movement: MovementComponent
+var _bot_movement: BotMovementComponent # 🆕 Компонент движения для бота
 var _animation: AnimationComponent
 var _snowball_spawner: SnowballSpawnerComponent
 var _player_health: HealthComponent
@@ -47,17 +51,30 @@ func _ready() -> void:
 	var animator := _find_animator(self)
 	assert(animator != null, "Player: внутри модели нет CharacterAnimator!")
 
-	_movement = MovementComponent.new(self, camera)
+	# 🆕 ИНИЦИАЛИЗАЦИЯ В ЗАВИСИМОСТИ ОТ РОЛИ
+	if is_bot:
+		_bot_movement = BotMovementComponent.new(self)
+		# Ботам не нужна активная камера и видимый UI
+		if camera:
+			camera.current = false
+		$CanvasLayer.visible = false
+	else:
+		_movement = MovementComponent.new(self, camera)
+		# HUD и камера видны только у локального игрока-человека
+		$CanvasLayer.visible = is_multiplayer_authority()
+		if camera:
+			camera.current = is_multiplayer_authority()
+
 	_animation = AnimationComponent.new(animator)
 
-	# ─── ЗВУК: создаём раньше остальных, чтобы сигналы было куда играть ───
+	# ─── ЗВУК ───
 	_audio = AudioComponent.new(self, get_node_or_null(audio_container_path))
 	_audio.set_bus(audio_bus)
 	if apply_3d_audio_settings:
 		_audio.configure_3d(audio_unit_size, audio_max_distance)
 	_audio.set_pitch_jitter(&"walk", step_pitch_jitter)
 	_audio.set_cooldown(&"jump", 0.20)
-	_audio.set_cooldown(&"land", 0.25)   # is_on_floor() мигает на склонах
+	_audio.set_cooldown(&"land", 0.25)
 	_audio.set_cooldown(&"hurt", 0.15)
 
 	_footsteps = FootstepComponent.new(_audio, &"walk")
@@ -74,10 +91,6 @@ func _ready() -> void:
 
 	_snowball_spawner = SnowballSpawnerComponent.new(self, camera, _throw_socket)
 
-	# HUD и камера — только у локального игрока
-	$CanvasLayer.visible = is_multiplayer_authority()
-	camera.current = is_multiplayer_authority()
-
 	_health_ui = HealthUIComponent.new(health_slider, health_label)
 	_health_ui.bind(_player_health)
 
@@ -85,19 +98,27 @@ func _ready() -> void:
 
 
 func _physics_process(delta: float) -> void:
-	# ── 1. Симуляция: только у владельца ──
+	if is_bot and not is_multiplayer_authority():
+		print("⚠️ Внимание: Я бот, но у меня НЕТ сетевого авторитета! Движение заблокировано.")
+	
+	# ── 1. Симуляция: только у владельца (для ботов владельцем будет хост/сервер) ──
 	if is_multiplayer_authority():
 		if _is_dead:
 			if not is_on_floor():
 				velocity += get_gravity() * delta
 				move_and_slide()
 		else:
-			_movement.update(delta, move_speed, jump_force)
-			_attack()
+			# 🆕 Разделение логики обновления движения
+			if is_bot:
+				_bot_movement.update(delta, move_speed, jump_force)
+				# Позже здесь можно добавить: _bot_attack()
+			else:
+				_movement.update(delta, move_speed, jump_force)
+				_attack()
 
 		_broadcast_locomotion()
 
-	# ── 2. Визуал и звук: у ВСЕХ, по реплицированным флагам ──
+	# ── 2. Визуал и звук: у ВСЕХ, по реплицированным флагам (работает и для ботов!) ──
 	_animation.update(_net_is_airborne, _net_is_moving)
 
 	var speed_ratio := 1.0
@@ -105,14 +126,12 @@ func _physics_process(delta: float) -> void:
 		speed_ratio = Vector2(velocity.x, velocity.z).length() / maxf(move_speed, 0.01)
 	_footsteps.update(delta, _net_is_moving, _net_is_airborne, speed_ratio)
 
-	# Прыжок / приземление — выводятся из состояния, значит работают у всех
 	if _net_is_airborne != _prev_airborne:
 		_prev_airborne = _net_is_airborne
 		if not _is_dead:
 			_audio.play(&"jump" if _net_is_airborne else &"land")
 
 
-## Единая точка доступа для других компонентов (спавнер снежка, бусты и т.д.)
 func get_audio() -> AudioComponent:
 	return _audio
 
@@ -120,8 +139,19 @@ func get_audio() -> AudioComponent:
 # ─── СЕТЬ ───
 
 func _broadcast_locomotion() -> void:
-	var moving := _movement.is_moving and not _is_dead
-	var airborne := _movement.is_jump
+	# 🆕 БЕЗОПАСНОЕ ПОЛУЧЕНИЕ СОСТОЯНИЯ из активного компонента
+	var current_is_moving := false
+	var current_is_jump := false
+	
+	if is_bot and _bot_movement != null:
+		current_is_moving = _bot_movement.is_moving
+		current_is_jump = _bot_movement.is_jump
+	elif not is_bot and _movement != null:
+		current_is_moving = _movement.is_moving
+		current_is_jump = _movement.is_jump
+
+	var moving := current_is_moving and not _is_dead
+	var airborne := current_is_jump
 
 	if moving == _sent_moving and airborne == _sent_airborne and _is_dead == _sent_dead:
 		return
@@ -135,7 +165,6 @@ func _broadcast_locomotion() -> void:
 	_rpc_locomotion.rpc(moving, airborne, _is_dead)
 
 
-# Канал 2 — косметика, не блокирует gameplay-RPC (урон, снежки).
 @rpc("authority", "call_remote", "reliable", 2)
 func _rpc_locomotion(moving: bool, airborne: bool, dead: bool) -> void:
 	_net_is_moving = moving
@@ -144,7 +173,6 @@ func _rpc_locomotion(moving: bool, airborne: bool, dead: bool) -> void:
 		_on_died()
 
 
-## Разовые события, которых нет в состоянии: бросок, урон, подбор буста.
 func _play_sound_net(id: StringName) -> void:
 	_audio.play(id)
 	if is_multiplayer_authority() and multiplayer.get_peers().size() > 0:
@@ -153,7 +181,7 @@ func _play_sound_net(id: StringName) -> void:
 
 @rpc("authority", "call_remote", "reliable", 2)
 func _rpc_sound(id: StringName) -> void:
-	_audio.play(id)   # неизвестный id компонент просто проигнорирует
+	_audio.play(id)
 
 
 func _attack() -> void:
@@ -175,7 +203,6 @@ func take_damage(amount: float) -> void:
 
 
 func _on_health_changed(current: float, max_health: float) -> void:
-	# звук только при реальном уменьшении, не при инициализации HUD
 	if _last_health >= 0.0 and current < _last_health:
 		_play_sound_net(&"hurt")
 	_last_health = current
@@ -186,12 +213,12 @@ func _on_died() -> void:
 	if _is_dead:
 		return
 	_is_dead = true
-	print("Игрок ", name, " погиб!")
+	print("Персонаж ", name, " погиб!")
 
 	_animation.play_death()
 	_footsteps.stop()
-	_audio.stop_all()          # обрываем шаги и любые лупы
-	_audio.play(&"death")      # играет на всех пирах — _on_died вызывается везде
+	_audio.stop_all()
+	_audio.play(&"death")
 
 	$CollisionShape3D.set_deferred("disabled", true)
 
