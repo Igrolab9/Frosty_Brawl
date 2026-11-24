@@ -5,6 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://dma3ygixq01et" path="res://Pictures/Textures/Cross.png" id="3_qktp4"]
 [ext_resource type="Script" uid="uid://cp37wnfhdwwk2" path="res://Scripts/Option_scenes/Scoreboard.gd" id="3_siiuw"]
 [ext_resource type="AudioStream" uid="uid://bw4tpc0rwddqe" path="res://Sounds/Common_sounds/Walk_on_snow (mp3cut.net).mp3" id="4_sselp"]
+[ext_resource type="AudioStream" uid="uid://d12v615ynll1m" path="res://Sounds/Player_sounds/VernaySmert.mp3" id="6_l3pic"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_ycesq"]
 height = 2.3587646
@@ -51,3 +52,8 @@ metadata/_edit_use_anchors_ = true
 
 [node name="Walk_sound" type="AudioStreamPlayer3D" parent="Audio" unique_id=476866137]
 stream = ExtResource("4_sselp")
+volume_db = -20.0
+
+[node name="Start_dialog" type="AudioStreamPlayer3D" parent="Audio" unique_id=107713534]
+stream = ExtResource("6_l3pic")
+volume_db = 80.0

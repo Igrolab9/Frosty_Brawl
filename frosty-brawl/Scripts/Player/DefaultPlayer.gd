@@ -45,6 +45,7 @@ var _sent_dead: bool = false
 @onready var camera: Camera3D = $Camera3D
 @onready var health_slider: Slider = $CanvasLayer/Health_slider
 @onready var health_label: Label = $CanvasLayer/Health_label
+@onready var start_dialog: AudioStreamPlayer3D = $Audio/Start_dialog
 
 
 func _ready() -> void:
@@ -95,6 +96,8 @@ func _ready() -> void:
 	_health_ui.bind(_player_health)
 
 	add_to_group(&"damageable")
+	
+	start_dialog.play()
 
 
 func _physics_process(delta: float) -> void:

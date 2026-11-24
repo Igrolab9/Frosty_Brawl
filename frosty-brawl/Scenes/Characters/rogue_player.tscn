@@ -5,6 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://dma3ygixq01et" path="res://Pictures/Textures/Cross.png" id="3_nh1q1"]
 [ext_resource type="Script" uid="uid://cp37wnfhdwwk2" path="res://Scripts/Option_scenes/Scoreboard.gd" id="3_v7hqk"]
 [ext_resource type="AudioStream" uid="uid://bw4tpc0rwddqe" path="res://Sounds/Common_sounds/Walk_on_snow (mp3cut.net).mp3" id="4_uk6w3"]
+[ext_resource type="AudioStream" uid="uid://tr0lpy3m7cyj" path="res://Sounds/Player_sounds/Monets2.mp3" id="6_nrvjn"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_e847u"]
 height = 2.3587646
@@ -49,3 +50,8 @@ theme_override_font_sizes/font_size = 24
 
 [node name="Walk_sound" type="AudioStreamPlayer3D" parent="Audio" unique_id=594116184]
 stream = ExtResource("4_uk6w3")
+volume_db = -20.0
+
+[node name="Start_dialog" type="AudioStreamPlayer3D" parent="Audio" unique_id=1076063686]
+stream = ExtResource("6_nrvjn")
+volume_db = 80.0
