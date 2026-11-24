@@ -9,6 +9,18 @@ extends RigidBody3D
 @export var broadcast_sfx: bool = false
 @export var debug_log: bool = true
 
+@export_group("Homing")
+@export var homing_enabled: bool = true
+@export var homing_turn_rate_deg: float = 35.0
+@export var homing_max_distance: float = 20.0
+@export var homing_cone_deg: float = 25.0
+@export var homing_start_delay: float = 0.1
+@export var homing_aim_height: float = 0.7
+@export var homing_check_los: bool = true
+@export var homing_los_mask: int = 1
+
+var _homing: HomingComponent = null
+
 var thrower_key: StringName = &""  # ← НОВОЕ: имя узла бросившего (ставит спавнер)
 
 var _spawn_time: float = 0.0
@@ -24,6 +36,16 @@ func _ready() -> void:
 
 	body_entered.connect(_on_body_entered)
 	get_tree().create_timer(lifetime).timeout.connect(queue_free)
+	
+	_homing = HomingComponent.new(_is_homing_target)
+	_homing.enabled = homing_enabled
+	_homing.turn_rate_deg = homing_turn_rate_deg
+	_homing.max_distance = homing_max_distance
+	_homing.cone_deg = homing_cone_deg
+	_homing.start_delay = homing_start_delay
+	_homing.aim_height = homing_aim_height
+	_homing.check_line_of_sight = homing_check_los
+	_homing.los_mask = homing_los_mask
 
 
 func _on_body_entered(body: Node) -> void:
@@ -75,3 +97,13 @@ func _report_hit(body: Node) -> void:
 		return
 	if body is Player and body.name != thrower_key:
 		BattleStats.report_hit(thrower_key)
+
+func _integrate_forces(state: PhysicsDirectBodyState3D) -> void:
+	if _homing == null or _has_hit:
+		return
+	# Без гейта по authority — см. примечание про сеть ниже.
+	_homing.steer(state, get_rid(), get_tree())
+
+
+func _is_homing_target(body: Node) -> bool:
+	return body is Player and body.name != thrower_key and not body.is_dead()

@@ -253,3 +253,6 @@ func _resolve_throw_socket() -> Node3D:
 		return slot
 
 	return null
+	
+func is_dead() -> bool:
+	return _is_dead
