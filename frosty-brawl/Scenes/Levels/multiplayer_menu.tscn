@@ -1,0 +1,53 @@
+[gd_scene format=3 uid="uid://6t01ct412msk"]
+
+[ext_resource type="Script" uid="uid://cevv451whuht4" path="res://Scripts/Option_scenes/multiplayer_menu.gd" id="1_gyx7h"]
+[ext_resource type="Texture2D" uid="uid://nj4f1q2fj1t6" path="res://Pictures/Game_mode_menu.png" id="1_ttv3w"]
+
+[node name="Multiplayer_menu" type="CanvasLayer" unique_id=2134956413]
+script = ExtResource("1_gyx7h")
+
+[node name="GameModeMenu" type="Sprite2D" parent="." unique_id=1629858815]
+position = Vector2(578, 337)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("1_ttv3w")
+
+[node name="Name_edit" type="LineEdit" parent="." unique_id=127388776]
+offset_left = 546.0
+offset_top = 137.0
+offset_right = 614.5
+offset_bottom = 168.0
+
+[node name="Ip_edit" type="LineEdit" parent="." unique_id=1708713430]
+offset_left = 546.0
+offset_top = 178.0
+offset_right = 614.5
+offset_bottom = 209.0
+
+[node name="Host_button" type="Button" parent="." unique_id=647315163]
+offset_left = 514.0
+offset_top = 222.0
+offset_right = 629.0
+offset_bottom = 253.0
+scale = Vector2(1.1200049, 1)
+text = "Создать игру"
+
+[node name="Join_button" type="Button" parent="." unique_id=834063250]
+offset_left = 515.0
+offset_top = 266.0
+offset_right = 643.0
+offset_bottom = 297.0
+text = "Подключиться"
+
+[node name="Back_button" type="Button" parent="." unique_id=321293489]
+offset_left = 515.0
+offset_top = 312.0
+offset_right = 643.0
+offset_bottom = 343.0
+text = "Назад"
+
+[node name="Status_label" type="Label" parent="." unique_id=300383016]
+offset_left = 554.0
+offset_top = 554.0
+offset_right = 594.0
+offset_bottom = 577.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)

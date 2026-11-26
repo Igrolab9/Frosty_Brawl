@@ -17,6 +17,7 @@ config/icon="res://icon.svg"
 [autoload]
 
 GameState="*uid://bnxkpkxo3msra"
+Net="*uid://ipjg3ulo4emb"
 Sfx="*uid://by72t0jdq1wwb"
 BattleStats="*uid://c50fjps4ghjvi"
 

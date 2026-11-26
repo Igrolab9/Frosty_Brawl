@@ -1,8 +1,10 @@
 [gd_scene format=3 uid="uid://twpuxib78hmi"]
 
 [ext_resource type="Texture2D" uid="uid://nj4f1q2fj1t6" path="res://Pictures/Game_mode_menu.png" id="1_8wxmq"]
+[ext_resource type="Script" uid="uid://bktwvutomjydy" path="res://Scripts/Option_scenes/game_mode_menu.gd" id="1_evjqv"]
 
 [node name="Game_mode_menu" type="CanvasLayer" unique_id=1434040960]
+script = ExtResource("1_evjqv")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=64526496]
 position = Vector2(604, 354)

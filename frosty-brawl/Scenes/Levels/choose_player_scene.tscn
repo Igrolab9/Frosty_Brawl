@@ -46,12 +46,27 @@ theme_override_font_sizes/font_size = 24
 text = "Воришка"
 
 [node name="Start_game_button" type="Button" parent="." unique_id=2141812902]
-offset_left = 500.0
+offset_left = 156.0
 offset_top = 567.0
-offset_right = 657.0
+offset_right = 313.0
 offset_bottom = 615.0
 theme_override_font_sizes/font_size = 24
 text = "Начать игру"
+
+[node name="Ready_button" type="Button" parent="." unique_id=524135785]
+offset_left = 326.0
+offset_top = 567.0
+offset_right = 483.0
+offset_bottom = 615.0
+theme_override_font_sizes/font_size = 24
+text = "Готов"
+
+[node name="Players_label" type="Label" parent="." unique_id=291485124]
+offset_left = 645.0
+offset_top = 574.0
+offset_right = 685.0
+offset_bottom = 597.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1828369374]
 stream = ExtResource("3_76ubi")
