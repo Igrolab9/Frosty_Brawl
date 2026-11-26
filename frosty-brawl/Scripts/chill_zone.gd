@@ -66,17 +66,21 @@ func _setup_online() -> void:
 	_net_spawner.spawn_path = ^".."
 	_net_spawner.spawn_function = _spawn_network_player
 	add_child(_net_spawner)
+	# ВНИМАНИЕ: spawned стреляет ТОЛЬКО у клиентов (remote peers), не у сервера.
 	_net_spawner.spawned.connect(_on_network_player_spawned)
 
 	if multiplayer.is_server():
 		var i := 0
 		for peer_id: int in GameState.roster:
 			var p: Dictionary = GameState.roster[peer_id]
-			_net_spawner.spawn({
+			var node := _net_spawner.spawn({
 				"peer_id": peer_id,
 				"character_id": String(p.character_id),
 				"point": i,
 			})
+			# На сервере сигнал spawned не сработает — регистрируем/оформляем сами.
+			if node:
+				_on_network_player_spawned(node)
 			i += 1
 	# Клиенты никого не спавнят — спавнер привозит персонажей с сервера.
 
