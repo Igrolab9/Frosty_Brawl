@@ -1,6 +1,7 @@
 extends Node3D
 ## Дирижёр: офлайн — локальный + боты; онлайн — по одному персонажу на пира.
-## Онлайн спавнит ТОЛЬКО сервер через MultiplayerSpawner, клиенты получают сами.
+## Табло создаётся и привязывается ОДИН раз в _ready, до любого спавна —
+## поэтому оно больше не может остаться без данных.
 
 var _catalog := CharacterCatalog.new()
 var _spawner := CharacterSpawner.new(_catalog)
@@ -20,12 +21,19 @@ func _ready() -> void:
 		push_error("Chill_zone: не найдены точки Spawn_point_*")
 		return
 	BattleStats.reset_match()
+
+	# Табло существует и привязано к компоненту статистики ВСЕГДА,
+	# даже если бойцы ещё не приехали по сети.
+	_scoreboard = Scoreboard.new()
+	add_child(_scoreboard)
+	_scoreboard.bind(BattleStats.get_stats(), &"")
+
 	if GameState.is_multiplayer():
 		_setup_online()
 	else:
 		_setup_offline()
 
-# ─── ОФЛАЙН: как раньше, с ботами ───
+# ─── ОФЛАЙН: локальный + боты ───
 func _setup_offline() -> void:
 	var local_id := GameState.selected_character_id
 	if not GameState.has_selection():
@@ -49,13 +57,13 @@ func _setup_offline() -> void:
 
 	if _local_player:
 		_presentation.apply(_local_player, true, false)
-	_setup_scoreboard()
+		_scoreboard.set_local_key(StringName(_local_player.name))
 
 # ─── ОНЛАЙН: без ботов, по персонажу на каждого пира ───
 func _setup_online() -> void:
 	_net_spawner = MultiplayerSpawner.new()
-	_net_spawner.name = "NetSpawner"   # одинаковое имя у всех пиров — важно для RPC
-	_net_spawner.spawn_path = ^".."    # персонажи станут детьми Chill_zone
+	_net_spawner.name = "NetSpawner"
+	_net_spawner.spawn_path = ^".."
 	_net_spawner.spawn_function = _spawn_network_player
 	add_child(_net_spawner)
 	_net_spawner.spawned.connect(_on_network_player_spawned)
@@ -70,14 +78,13 @@ func _setup_online() -> void:
 				"point": i,
 			})
 			i += 1
-	# Клиенты НИКОГО не спавнят — спавнер сам привезёт персонажей с сервера
+	# Клиенты никого не спавнят — спавнер привозит персонажей с сервера.
 
 func _spawn_network_player(data: Dictionary) -> Node:
-	# Вызывается у ВСЕХ пиров — узел обязан получиться идентичным
 	var player := _catalog.get_scene(StringName(data.character_id)).instantiate() as Node3D
-	player.name = str(data.peer_id)                 # одинаковое имя везде → RPC попадают куда надо
+	player.name = str(data.peer_id)
 	player.is_bot = false
-	player.set_multiplayer_authority(data.peer_id)  # ← КЛЮЧ: кто управляет этим персонажем
+	player.set_multiplayer_authority(data.peer_id)
 	player.set_meta("point", data.point)
 	player.set_meta("character_id", data.character_id)
 	return player
@@ -92,14 +99,7 @@ func _on_network_player_spawned(node: Node) -> void:
 	_register_stats(player, StringName(player.get_meta("character_id")))
 	if is_local:
 		_local_player = player
-		_setup_scoreboard()
-
-func _setup_scoreboard() -> void:
-	if _local_player == null or _scoreboard != null:
-		return
-	_scoreboard = Scoreboard.new()
-	add_child(_scoreboard)
-	_scoreboard.bind(BattleStats.get_stats(), StringName(_local_player.name))
+		_scoreboard.set_local_key(StringName(player.name))
 
 func _register_stats(player: Node3D, id: StringName) -> void:
 	if player == null:

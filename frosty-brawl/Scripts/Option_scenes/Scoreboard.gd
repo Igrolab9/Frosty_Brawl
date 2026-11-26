@@ -1,9 +1,8 @@
 class_name Scoreboard
 extends CanvasLayer
 ## SRP: только показывает таблицу. Данные — через bind() (DIP).
-## Весь UI строится в коде — отдельная .tscn не нужна.
-## Видимость переключаем у корневого Control (_root), а не у CanvasLayer.
-## Ввод — опросом Input в _process: не зависит от перехвата событий.
+## Панель никогда не бывает пустой: заголовки рисуются всегда,
+## без данных показывается строка ожидания. bind() можно звать повторно и поздно.
 
 const COLUMNS := ["Боец", "Броски", "Попадания", "Точность"]
 
@@ -11,26 +10,32 @@ var _stats: BattleStatsComponent
 var _local_key: StringName = &""
 var _grid: GridContainer
 var _root: Control
-var _has_action: bool = false  # ← НОВОЕ: есть ли экшен в InputMap
+var _has_action: bool = false
 
 func _ready() -> void:
 	layer = 10
 	process_mode = Node.PROCESS_MODE_ALWAYS
-	_has_action = InputMap.has_action(&"ui_scoreboard")  # ← НОВОЕ
+	_has_action = InputMap.has_action(&"ui_scoreboard")
 	_build_ui()
 	_root.visible = false
 
 func bind(stats: BattleStatsComponent, local_key: StringName) -> void:
+	if _stats != null and _stats.stats_changed.is_connected(_refresh):
+		_stats.stats_changed.disconnect(_refresh)
 	_stats = stats
 	_local_key = local_key
-	_stats.stats_changed.connect(_refresh)
+	if _stats != null and not _stats.stats_changed.is_connected(_refresh):
+		_stats.stats_changed.connect(_refresh)
+	if _root != null and _root.visible:
+		_refresh()
 
-# ← ИЗМЕНЕНО: вместо _input — опрос каждый кадр.
-# Держишь Tab — таблица видна, отпустил — скрылась (как в CS).
-# Input.is_action_pressed читает глобальное состояние ввода напрямую,
-# поэтому работает, даже если событие перехватил другой узел или GUI.
+func set_local_key(key: StringName) -> void:
+	_local_key = key
+	if _root != null and _root.visible:
+		_refresh()
+
 func _process(_delta: float) -> void:
-	var held := Input.is_key_pressed(KEY_TAB)  # страховка: сырой Tab
+	var held := Input.is_key_pressed(KEY_TAB)
 	if _has_action:
 		held = held or Input.is_action_pressed(&"ui_scoreboard")
 	if held == _root.visible:
@@ -40,7 +45,7 @@ func _process(_delta: float) -> void:
 		_refresh()
 
 func _refresh() -> void:
-	if _root == null or not _root.visible or _stats == null:
+	if _root == null or not _root.visible:
 		return
 	for child in _grid.get_children():
 		_grid.remove_child(child)
@@ -51,11 +56,15 @@ func _refresh() -> void:
 	for i in COLUMNS.size():
 		_grid.add_child(_make_label(COLUMNS[i], aligns[i], true))
 
-	var entries := _stats.get_entries()
-	var keys := entries.keys()
-	# как в CS: сортировка по «очкам» — у нас по попаданиям
-	keys.sort_custom(func(a, b): return entries[a].hits > entries[b].hits)
+	var entries: Dictionary = _stats.get_entries() if _stats != null else {}
+	if entries.is_empty():
+		_grid.add_child(_make_label("Ожидание бойцов…", aligns[0]))
+		for i in range(1, COLUMNS.size()):
+			_grid.add_child(_make_label("—", aligns[i]))
+		return
 
+	var keys := entries.keys()
+	keys.sort_custom(func(a, b): return entries[a].hits > entries[b].hits)
 	for key: StringName in keys:
 		var s: PlayerStats = entries[key]
 		var is_local := key == _local_key

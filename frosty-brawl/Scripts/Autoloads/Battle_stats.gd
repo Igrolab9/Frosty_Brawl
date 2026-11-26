@@ -1,10 +1,12 @@
 extends Node
-## Дирижёр статистики. Источник правды — сервер.
-## RefCounted-компонент хранит данные, этот Node — сеть и сигналы.
+## Дирижёр статистики. Источник правды по СЧЁТЧИКАМ — сервер.
+## Состав бойцов детерминирован (спавн одинаков у всех пиров),
+## поэтому имена регистрируются локально у каждого — таблица не пустует.
 
 signal stats_changed
 
 var _stats := BattleStatsComponent.new()
+var _applying_snapshot := false
 
 func _ready() -> void:
 	_stats.stats_changed.connect(_on_stats_changed)
@@ -13,11 +15,11 @@ func _ready() -> void:
 func get_stats() -> BattleStatsComponent:
 	return _stats
 
-# ─── API для геймплея (зовут chill_zone / spawner / snow_ball) ───
+# ─── API для геймплея ───
 
 func register_player(key: StringName, character_id: StringName, display_name: String) -> void:
-	if not _is_server():
-		return # клиентам реестр придёт снапшотом
+	# Регистрируем у ВСЕХ пиров: имена появятся сразу, без ожидания снапшота.
+	# Броски/попадания по-прежнему считает только сервер.
 	_stats.register_player(key, character_id, display_name)
 
 func report_throw(key: StringName) -> void:
@@ -42,8 +44,6 @@ func reset_match() -> void:
 func _rpc_report_throw(key: String) -> void:
 	if not _is_server():
 		return
-	# TODO: когда игроки будут именоваться по peer_id — проверяй,
-	# что multiplayer.get_remote_sender_id() владеет этим key (античит)
 	_stats.record_throw(StringName(key))
 
 @rpc("any_peer", "call_remote", "reliable")
@@ -54,18 +54,22 @@ func _rpc_report_hit(key: String) -> void:
 
 @rpc("authority", "call_remote", "reliable")
 func _rpc_sync(data: Dictionary) -> void:
+	_applying_snapshot = true
 	_stats.load_snapshot(data)
+	_applying_snapshot = false
 
 # ─── внутреннее ───
 
 func _on_stats_changed() -> void:
 	stats_changed.emit()
+	if _applying_snapshot:
+		return # применяем чужой снапшот — не ретранслируем (защита от петли)
 	if _is_server() and _has_network():
 		_rpc_sync.rpc(_stats.snapshot())
 
 func _on_peer_connected(_id: int) -> void:
 	if _is_server():
-		_rpc_sync.rpc(_stats.snapshot()) # новичку — полное состояние
+		_rpc_sync.rpc_id(_id, _stats.snapshot())
 
 func _is_server() -> bool:
 	return not _has_network() or multiplayer.is_server()
