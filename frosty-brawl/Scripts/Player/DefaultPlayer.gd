@@ -30,6 +30,7 @@ var _health_ui: HealthUIComponent
 var _audio: AudioComponent
 var _footsteps: FootstepComponent
 var _throw_socket: Node3D
+var _net_sync: NetworkSyncComponent
 
 var _is_dead: bool = false
 var _last_health: float = -1.0
@@ -97,13 +98,13 @@ func _ready() -> void:
 
 	add_to_group(&"damageable")
 	
+	if GameState.is_multiplayer() and not is_bot:
+		_net_sync = NetworkSyncComponent.new(self)
+	
 	start_dialog.play()
 
 
 func _physics_process(delta: float) -> void:
-	if is_bot and not is_multiplayer_authority():
-		print("⚠️ Внимание: Я бот, но у меня НЕТ сетевого авторитета! Движение заблокировано.")
-	
 	# ── 1. Симуляция: только у владельца (для ботов владельцем будет хост/сервер) ──
 	if is_multiplayer_authority():
 		if _is_dead:

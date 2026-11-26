@@ -52,7 +52,7 @@ func _rpc_report_hit(key: String) -> void:
 		return
 	_stats.record_hit(StringName(key))
 
-@rpc("authority", "call_local", "reliable")
+@rpc("authority", "call_remote", "reliable")
 func _rpc_sync(data: Dictionary) -> void:
 	_stats.load_snapshot(data)
 

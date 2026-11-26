@@ -12,15 +12,15 @@ scale = Vector2(0.5, 0.5)
 texture = ExtResource("1_ttv3w")
 
 [node name="Name_edit" type="LineEdit" parent="." unique_id=127388776]
-offset_left = 546.0
+offset_left = 520.0
 offset_top = 137.0
-offset_right = 614.5
+offset_right = 640.0
 offset_bottom = 168.0
 
 [node name="Ip_edit" type="LineEdit" parent="." unique_id=1708713430]
-offset_left = 546.0
+offset_left = 520.0
 offset_top = 178.0
-offset_right = 614.5
+offset_right = 640.0
 offset_bottom = 209.0
 
 [node name="Host_button" type="Button" parent="." unique_id=647315163]
